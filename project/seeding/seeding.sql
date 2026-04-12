@@ -12,7 +12,7 @@ CREATE TEMP TABLE "temp" ("user_id" INT, "first_name" TEXT, "last_name" TEXT, "b
 .import --skip 1 seeding/players_seed.csv temp
 INSERT INTO "players" ("user_id", "first_name", "last_name", "birth_country", "birth_state", "birth_year")
 SELECT "user_id", "first_name", "last_name", "birth_country", "birth_state", "birth_year" FROM "temp";
-DROP TABLE "temp";  
+DROP TABLE "temp";
 
 -- trainers
 CREATE TEMP TABLE "temp" ("user_id" INT, "first_name" TEXT, "last_name" TEXT, "birth_country" TEXT, "birth_state" TEXT, "birth_year" INT);
@@ -31,8 +31,9 @@ SELECT "user_id", "first_name", "last_name", "birth_country", "birth_state", "bi
 DROP TABLE "temp";
 
 --Teams
-CREATE TEMP TABLE "tmp_teams" (name TEXT, "bio" TEXT, "foundation_year" INT, "primary_color" TEXT, "secondary_color" TEXT);
-.import --csv --skip 1 teams_seed.csv tmp_teams
+CREATE TEMP TABLE "temp" (name TEXT, "bio" TEXT, "foundation_year" INT, "primary_color" TEXT, "secondary_color" TEXT);
+.mode csv
+.import --skip 1 seeding/teams_seed.csv temp
 INSERT INTO "teams" ("name", "bio", "foundation_year", "primary_color", "secondary_color")
-SELECT * FROM "tmp_teams";
-DROP TABLE "tmp_teams";
+SELECT * FROM "temp";
+DROP TABLE "temp";
