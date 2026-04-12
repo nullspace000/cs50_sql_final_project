@@ -13,11 +13,9 @@ CREATE TABLE "users" (
 -- Represents players
 CREATE TABLE "players" (
     "id" INTEGER,
-    "user_id" INTEGER,
-    "first_name" TEXT NOT NULL UNIQUE,
-    "last_name" TEXT NOT NULL UNIQUE,
-    "shirt_number" INTEGER NOT NULL,
-    "position" TEXT NOT NULL CHECK("position" IN ('Goalkeeper', 'Defender', 'Midfield', 'Forward')),
+    "user_id" INTEGER UNIQUE,
+    "first_name" TEXT NOT NULL,
+    "last_name" TEXT NOT NULL,
     "birth_country" TEXT NOT NULL,
     "birth_state" TEXT NOT NULL,
     "birth_year" INTEGER NOT NULL,
@@ -30,7 +28,7 @@ CREATE TABLE "players" (
 -- Represents trainers
 CREATE TABLE "trainers" (
     "id" INTEGER,
-    "user_id" INTEGER,
+    "user_id" INTEGER UNIQUE,
     "first_name" TEXT NOT NULL,
     "last_name" TEXT NOT NULL,
     "birth_country" TEXT NOT NULL,
@@ -74,6 +72,8 @@ CREATE TABLE "teams" (
 CREATE TABLE "teams_players" (
     "player_id" INTEGER,
     "team_id" INTEGER,
+    "shirt_number" INTEGER NOT NULL,
+    "position" TEXT NOT NULL CHECK("position" IN ('Goalkeeper', 'Defender', 'Midfield', 'Forward')),
     -- "team_id" is first in the primary key so that the index is created for "team_id"
     PRIMARY KEY("team_id", "player_id"),
     FOREIGN KEY("player_id") REFERENCES "players"("id"),

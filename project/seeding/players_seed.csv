@@ -1,0 +1,71 @@
+user_id,first_name,last_name,birth_country,birth_state,birth_year
+0,Mateo,Cohen,Australia,Queensland,1951
+1,Amara,Nguyen,Mexico,Guanajuato,1996
+3,Aisha,Kone,Canada,Alberta,1985
+5,Maria,Okonkwo,Australia,Victoria,1986
+7,Aisha,Patel,Mexico,Ciudad de México,1958
+8,Marco,Osei,India,Punjab,2003
+9,Dara,Tremblay,United States,Florida,2002
+11,Vera,Tremblay,France,Occitanie,1973
+12,Ivan,Garcia,Germany,Saxony-Anhalt,1987
+15,Camille,Kone,Mexico,Veracruz,1998
+18,Amina,Nguyen,Australia,Queensland,2001
+19,Luna,Johansson,United States,Ohio,1977
+22,Caleb,Tanaka,France,Pays de la Loire,1955
+23,Sofia,Santos,Canada,Alberta,1983
+24,Zoe,Kim,India,Uttar Pradesh,1988
+25,Owen,Tremblay,Brazil,Rio de Janeiro,1954
+27,Elena,Nkrumah,Canada,Quebec,1964
+28,Vera,Ferreira,Australia,Northern Territory,1979
+29,Astrid,Silva,France,Hauts-de-France,1995
+30,Ibrahim,Nkrumah,United States,Illinois,1994
+31,Fatima,Petrov,Japan,Hiroshima,1956
+32,Leila,Fischer,United States,New York,1961
+35,Victor,Herrera,Nigeria,Kaduna,1961
+37,Ingrid,Petrov,Canada,Alberta,1994
+42,Freya,Sousa,Japan,Osaka,1990
+43,Astrid,Adeyemi,India,Rajasthan,1958
+44,Julia,Mensah,France,Auvergne-Rhône-Alpes,1980
+45,Hugo,Smith,Nigeria,Ogun,1977
+46,Marco,Castro,Nigeria,Enugu,1964
+47,Vera,Svensson,United States,California,1963
+50,Ethan,Herrera,Germany,North Rhine-Westphalia,1951
+51,Ivan,Hassan,Australia,Tasmania,1978
+53,Freya,Lopes,Brazil,São Paulo,2003
+54,Miles,Mensah,United States,California,1991
+55,Camille,Ito,Mexico,Guanajuato,1960
+57,Diego,Fischer,Australia,Cocos Islands,1970
+58,Kwame,Schneider,Canada,Newfoundland,1974
+59,James,Herrera,India,Punjab,1989
+60,Adrian,Johansson,Germany,North Rhine-Westphalia,2004
+61,Hassan,Patel,Japan,Saitama,1963
+64,Luna,Lopes,Brazil,Ceará,1981
+65,Luna,Diallo,Mexico,Chihuahua,1976
+66,Tomás,Andersen,Germany,Bavaria,1962
+67,Aisha,Petrov,Nigeria,Kaduna,1950
+68,Sana,Laurent,Australia,Lord Howe Island,1983
+70,Fatima,Kone,United States,Georgia,2001
+71,Rosa,Osei,Mexico,Ciudad de México,1952
+73,Kwame,Kim,Japan,Hokkaido,1990
+74,Elias,Sousa,United States,Arizona,1978
+75,Zoe,Yamamoto,Mexico,Nuevo León,1959
+76,Camille,Schneider,Germany,Saxony-Anhalt,1967
+77,Maria,Dubois,Nigeria,Oyo,2000
+79,James,Castro,Australia,Queensland,1952
+80,Nadia,Becker,Germany,Thuringia,1955
+81,Mateo,Moreau,Australia,Northern Territory,1981
+82,Samuel,Lindqvist,India,Karnataka,1967
+85,Chiara,Reyes,United States,Colorado,1998
+87,Liam,Nkrumah,Canada,Nova Scotia,1980
+88,Hugo,Yilmaz,France,Bretagne,1974
+89,Lucas,Fischer,Nigeria,Delta,1976
+90,Hassan,Cohen,Japan,Tokyo,1955
+91,Miles,Ito,France,Pays de la Loire,1952
+92,Mia,Lindqvist,France,Hauts-de-France,1972
+93,Rosa,Becker,Mexico,Jalisco,2000
+94,Liam,Weber,France,Île-de-France,1968
+95,Soraya,Rossi,Brazil,Rio Grande do Sul,1972
+96,Hassan,Kim,Mexico,Yucatán,2002
+97,Finn,Laurent,Germany,Saxony-Anhalt,2003
+99,Camille,Kim,France,Pays de la Loire,1970
+100,Aysha,Rossi,Nigeria,Delta,1988
