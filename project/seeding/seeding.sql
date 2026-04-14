@@ -45,3 +45,19 @@ CREATE TEMP TABLE "temp" ("player_id" INTEGER, "team_id" INTEGER, "shirt_number"
 INSERT INTO "teams_players" ("player_id", "team_id", "shirt_number", "position")
 SELECT * FROM "temp";
 DROP TABLE "temp";
+
+--teams_trainers
+CREATE TEMP TABLE "temp" ("trainer_id" INTEGER, "team_id" INTEGER);
+.mode csv
+.import --skip 1 seeding/teams_trainers_seed.csv temp
+INSERT INTO "teams_trainers" ("trainer_id", "team_id")
+SELECT * FROM "temp";
+DROP TABLE "temp";
+
+--teams_admins
+CREATE TEMP TABLE "temp" ("user_id" INTEGER, "team_id" INTEGER);
+.mode csv
+.import --skip 1 seeding/teams_admins_seed.csv temp
+INSERT INTO "teams_admins" ("user_id", "team_id")
+SELECT * FROM "temp";
+DROP TABLE "temp";

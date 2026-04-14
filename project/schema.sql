@@ -73,7 +73,7 @@ CREATE TABLE "teams_players" (
     "player_id" INTEGER,
     "team_id" INTEGER,
     "shirt_number" INTEGER NOT NULL,
-    "position" TEXT NOT NULL CHECK("position" IN ('Goalkeeper', 'Defender', 'Midfield', 'Forward')),
+    "position" TEXT NOT NULL CHECK("position" IN ('Goalkeeper', 'Defender', 'Midfielder', 'Forward')),
     -- "team_id" is first in the primary key so that the index is created for "team_id"
     PRIMARY KEY("team_id", "player_id"),
     FOREIGN KEY("player_id") REFERENCES "players"("id"),
