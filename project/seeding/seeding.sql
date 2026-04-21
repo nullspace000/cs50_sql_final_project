@@ -71,4 +71,11 @@ SELECT * FROM "temp";
 DROP TABLE "temp";
 
 -- leagues_admins
+CREATE TEMP TABLE "temp" ("user_id" INTEGER, "league_id" INTEGER);
+.mode csv
+.import --skip 1 seeding/leagues_admins_seed.csv temp
+INSERT INTO "leagues_admins" ("user_id", "league_id")
+SELECT * FROM "temp";
+DROP TABLE "temp";
 
+-- tournaments
