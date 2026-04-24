@@ -151,6 +151,7 @@ CREATE TABLE "tournaments" (
     FOREIGN KEY("league_id") REFERENCES "leagues"("id")
 );
 
+-- Leagues
 CREATE TABLE "leagues" (
     "id" INTEGER,
     "name" TEXT NOT NULL,

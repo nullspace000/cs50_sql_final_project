@@ -1,0 +1,3 @@
+league_id,name,status,season,format,start_date,end_date,half_time,max_teams,entry_fee,points_per_win,points_per_draw,points_per_loss
+1,Spring Championship,Ongoing,2025,Round Robin,2025-03-01,2025-06-30,45,8,500.00,3,1,0
+2,Summer Knockout Cup,Scheduled,2025,Knockout,2025-07-01,2025-08-31,45,16,250.00,3,1,0
