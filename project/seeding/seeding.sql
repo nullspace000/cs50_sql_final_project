@@ -94,3 +94,11 @@ INSERT INTO "tournament_teams" ("tournament_id",
 "team_id")
 SELECT * FROM "temp";
 DROP TABLE "temp";
+
+-- matches
+CREATE TEMP TABLE "temp" ("tournament_id" INTEGER,"location" TEXT,"date" NUMERIC,"status" TEXT,"team_a_id" INTEGER,"team_b_id" INTEGER,"score_team_a" INTEGER,"score_team_b" INTEGER);
+.mode csv
+.import --skip 1 seeding/matches_seed.csv temp
+INSERT INTO "matches" ("tournament_id","location","date","status","team_a_id","team_b_id","score_team_a","score_team_b")
+SELECT * FROM "temp";
+DROP TABLE "temp";
