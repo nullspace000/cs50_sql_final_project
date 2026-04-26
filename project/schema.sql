@@ -194,9 +194,9 @@ CREATE TABLE "tournament_teams" (
 
 -- Joing teams - teams_players - players
 CREATE VIEW "teams_players_view" AS
-SELECT "teams"."name", "teams"."id",
-"team_id", "shirt_number", "position", "player_id", 
-"players"."id", "players"."first_name", "players"."last_name", "players"."birth_country", "players"."birth_year"
+SELECT "teams"."name", 
+"shirt_number", "position",
+"players"."first_name", "players"."last_name", "players"."birth_country", "players"."birth_year"
 FROM "teams_players"
 JOIN "teams" ON "teams_players"."team_id" = "teams"."id"
 JOIN "players" ON "teams_players"."player_id" = "players"."id";
