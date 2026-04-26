@@ -4,8 +4,6 @@ seeding match_referees
 view for every joining table
     example: teams_players_view
 
-    - teams_admins
-    - leagues_admins
     - matches_referees
     - tournament_teams
 

@@ -218,3 +218,11 @@ SELECT "teams"."name", "users"."email"
 FROM "teams_admins"
 JOIN "teams" ON "teams_admins"."team_id" = "teams"."id"
 JOIN "users" ON "teams_admins"."user_id" = "users"."id";
+
+-- leagues_admins_view
+-- Joining leagues - leagues_admins - users
+CREATE VIEW "leagues_admins_view" AS
+SELECT "leagues"."name", "users"."email"
+FROM "leagues_admins"
+JOIN "leagues" ON "leagues_admins"."league_id" = "leagues"."id"
+JOIN "users" ON "leagues_admins"."user_id" = "users"."id";
