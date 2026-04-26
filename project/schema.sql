@@ -192,6 +192,7 @@ CREATE TABLE "tournament_teams" (
 -- # Views ########
 -- ################
 
+-- teams_players_view
 -- Joing teams - teams_players - players
 CREATE VIEW "teams_players_view" AS
 SELECT "teams"."name", 
@@ -200,3 +201,12 @@ SELECT "teams"."name",
 FROM "teams_players"
 JOIN "teams" ON "teams_players"."team_id" = "teams"."id"
 JOIN "players" ON "teams_players"."player_id" = "players"."id";
+
+-- teams_trainers_view
+-- Joing teams - teams_trainers - trainers
+CREATE VIEW "teams_trainers_view" AS
+SELECT "teams"."name", 
+"trainers"."first_name", "trainers"."last_name", "trainers"."birth_country", "trainers"."birth_year"
+FROM "teams_trainers"
+JOIN "teams" ON "teams_trainers"."team_id" = "teams"."id"
+JOIN "trainers" ON "teams_trainers"."trainer_id" = "trainers"."id";
