@@ -210,3 +210,11 @@ SELECT "teams"."name",
 FROM "teams_trainers"
 JOIN "teams" ON "teams_trainers"."team_id" = "teams"."id"
 JOIN "trainers" ON "teams_trainers"."trainer_id" = "trainers"."id";
+
+-- teams_admins_view
+-- Joining teams - teams_admins - users
+CREATE VIEW "teams_admins_view" AS
+SELECT "teams"."name", "users"."email"
+FROM "teams_admins"
+JOIN "teams" ON "teams_admins"."team_id" = "teams"."id"
+JOIN "users" ON "teams_admins"."user_id" = "users"."id";
