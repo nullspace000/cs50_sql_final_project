@@ -1,0 +1,12 @@
+seeding matches
+seeding match_events
+
+view for every joining table
+    example: teams_players_view
+
+    - teams_players
+    - teams_trainers
+    - teams_admins
+    - leagues_admins
+    - matches_referees
+    - tournament_teams

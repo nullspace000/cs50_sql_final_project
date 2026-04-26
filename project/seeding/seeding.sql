@@ -90,7 +90,7 @@ DROP TABLE "temp";
 CREATE TEMP TABLE "temp" ("tournament_id" INTEGER, "team_id" INTEGER);
 .mode csv
 .import --skip 1 seeding/tournament_teams_seed.csv temp
-INSERT INTO "tournaments" ("tournament_id",
+INSERT INTO "tournament_teams" ("tournament_id",
 "team_id")
 SELECT * FROM "temp";
 DROP TABLE "temp";

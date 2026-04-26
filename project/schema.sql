@@ -188,21 +188,15 @@ CREATE TABLE "tournament_teams" (
     FOREIGN KEY("team_id") REFERENCES "teams"("id")
 );
 
-/*
-drop table players;
-drop table teams;
-drop table users;
-drop table trainers;
-drop table matches;
+-- ################
+-- # Views ########
+-- ################
 
-drop table referees;
-drop table teams_trainers;
-drop table teams_admins;
-drop table teams_players;
-drop table tournaments;
-drop table match_events;
-
-drop table leagues;
-drop table leagues_admins;
-drop table matches_referees;
-drop table tournament_teams;*/
+-- Joing teams - teams_players - players
+CREATE VIEW "teams_players_view" AS
+SELECT "teams"."name", "teams"."id",
+"team_id", "shirt_number", "position", "player_id", 
+"players"."id", "players"."first_name", "players"."last_name", "players"."birth_country", "players"."birth_year"
+FROM "teams_players"
+JOIN "teams" ON "teams_players"."team_id" = "teams"."id"
+JOIN "players" ON "teams_players"."player_id" = "players"."id";

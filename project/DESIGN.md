@@ -2,20 +2,20 @@
 
 By Diego Couto
 
-Video overview: <URL HERE>
+Video overview: <URL HERE> !@#$%!$#%wjfq;wo\
 
 ## Scope
 
 In this section you should answer the following questions:
 
 * What is the purpose of your database?
-  - I'm not a soccer fan myself, but I have this Idea for an app: To represent small football leagues. It would allow users to keep track of tournaments, create their own team, publish match location and date and more.
+  - I'm not a soccer fan myself, but I have this Idea for an app: To represent small football leagues. It would allow users to keep track of tournaments, create their own team, publish match location and date and so on.
 
 * Which people, places, things, etc. are you including in the scope of your database?
-  - Leagues, Tournaments, matches, teams, players, users
+  - Leagues, Tournaments, matches, match events, teams, players, trainers, referees, and users.
 
 * Which people, places, things, etc. are *outside* the scope of your database?
-  - Venues, referees and player specific performance data.
+  - Venues and player specific performance data.
 
 ## Functional Requirements
 
