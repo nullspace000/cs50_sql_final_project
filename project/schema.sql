@@ -180,7 +180,7 @@ CREATE TABLE "matches_referees" (
 );
 
 -- Tournaments and teams joining table
-CREATE TABLE "tournament_teams" (
+CREATE TABLE "tournaments_teams" (
     "tournament_id" INTEGER,
     "team_id" INTEGER,
     PRIMARY KEY("tournament_id", "team_id"),
@@ -226,3 +226,12 @@ SELECT "leagues"."name", "users"."email"
 FROM "leagues_admins"
 JOIN "leagues" ON "leagues_admins"."league_id" = "leagues"."id"
 JOIN "users" ON "leagues_admins"."user_id" = "users"."id";
+
+-- tournaments_teams_view
+-- Joining tournaments - tournaments_teams - teams
+CREATE VIEW "tournaments_teams_view" AS
+SELECT "tournaments"."name", "tournaments"."status", "tournaments"."season", "tournaments"."format", "tournaments"."start_date", "tournaments"."end_date", "tournaments"."max_teams",
+"teams"."name", "teams"."foundation_year"
+FROM "tournaments_teams"
+JOIN "tournaments" ON "tournaments_teams"."tournament_id" = "tournaments"."id"
+JOIN "teams" ON "tournaments_teams"."team_id" = "teams"."id";
