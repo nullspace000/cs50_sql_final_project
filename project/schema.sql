@@ -103,12 +103,12 @@ CREATE TABLE "teams_admins" (
 CREATE TABLE "matches" (
     "id" INTEGER,
     "tournament_id" INTEGER,
+    "team_a_id" INTEGER NOT NULL,
+    "team_b_id" INTEGER NOT NULL,
     "location" TEXT NOT NULL,
     "date" NUMERIC NOT NULL,
     -- remember to set scores to 0 when match_status changes to 'Ongoing'
     "status" TEXT NOT NULL CHECK ("status" IN ('Scheduled', 'Ongoing', 'Finished', 'Postponed')) DEFAULT 'Scheduled',
-    "team_a_id" INTEGER NOT NULL,
-    "team_b_id" INTEGER NOT NULL,
     "score_team_a" INTEGER,
     "score_team_b" INTEGER,
     "creation_timestamp" NUMERIC NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -192,6 +192,25 @@ CREATE TABLE "tournaments_teams" (
 -- # Views ########
 -- ################
 
+-- matches_referees_view
+-- Joining "teams" - "matches" - "matches_referees" - "referees"
+CREATE VIEW "matches_referees_view" AS
+SELECT
+    "matches"."team_a_id",
+    "team_a"."name"        AS "team_A",
+    "matches"."team_b_id",
+    "team_b"."name"        AS "team_B",
+    "matches"."date",
+    "matches"."location",
+    "matches"."status",
+    "referees"."first_name",
+    "referees"."last_name"
+FROM "matches_referees"
+JOIN "matches"  ON  "matches_referees"."match_id"   = "matches"."id"
+JOIN "teams" AS "team_a" ON "matches"."team_a_id"   = "team_a"."id"
+JOIN "teams" AS "team_b" ON "matches"."team_b_id"   = "team_b"."id"
+JOIN "referees" ON "matches_referees"."referee_id"  = "referees"."id";
+
 -- teams_players_view
 -- Joing teams - teams_players - players
 CREATE VIEW "teams_players_view" AS
@@ -235,3 +254,4 @@ SELECT "tournaments"."name", "tournaments"."status", "tournaments"."season", "to
 FROM "tournaments_teams"
 JOIN "tournaments" ON "tournaments_teams"."tournament_id" = "tournaments"."id"
 JOIN "teams" ON "tournaments_teams"."team_id" = "teams"."id";
+ 

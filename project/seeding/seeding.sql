@@ -102,3 +102,11 @@ CREATE TEMP TABLE "temp" ("tournament_id" INTEGER,"location" TEXT,"date" NUMERIC
 INSERT INTO "matches" ("tournament_id","location","date","status","team_a_id","team_b_id","score_team_a","score_team_b")
 SELECT * FROM "temp";
 DROP TABLE "temp";
+
+-- matches_referees
+CREATE TEMP TABLE "temp" ("referee_id" INTEGER, "match_id" INTEGER);
+.mode csv
+.import --skip 1 seeding/matches_referees_seed.csv temp
+INSERT INTO "matches_referees" ("referee_id", "match_id")
+SELECT * FROM "temp";
+DROP TABLE "temp";

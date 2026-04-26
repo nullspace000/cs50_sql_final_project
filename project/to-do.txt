@@ -1,12 +1,9 @@
 seeding match_events
-seeding match_referees
 
 view for every joining table
     example: teams_players_view
 
     - matches_referees
-    - tournament_teams
-
 
 video script:
 1. idea
