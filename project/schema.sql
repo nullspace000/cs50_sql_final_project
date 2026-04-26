@@ -195,16 +195,15 @@ CREATE TABLE "tournaments_teams" (
 -- matches_referees_view
 -- Joining "teams" - "matches" - "matches_referees" - "referees"
 CREATE VIEW "matches_referees_view" AS
-SELECT
-    "matches"."team_a_id",
-    "team_a"."name"        AS "team_A",
-    "matches"."team_b_id",
-    "team_b"."name"        AS "team_B",
-    "matches"."date",
-    "matches"."location",
-    "matches"."status",
-    "referees"."first_name",
-    "referees"."last_name"
+SELECT "matches"."team_a_id",
+"team_a"."name"        AS "team_A",
+"matches"."team_b_id",
+"team_b"."name"        AS "team_B",
+"matches"."date",
+"matches"."location",
+"matches"."status",
+"referees"."first_name",
+"referees"."last_name"
 FROM "matches_referees"
 JOIN "matches"  ON  "matches_referees"."match_id"   = "matches"."id"
 JOIN "teams" AS "team_a" ON "matches"."team_a_id"   = "team_a"."id"
@@ -216,7 +215,10 @@ JOIN "referees" ON "matches_referees"."referee_id"  = "referees"."id";
 CREATE VIEW "teams_players_view" AS
 SELECT "teams"."name", 
 "shirt_number", "position",
-"players"."first_name", "players"."last_name", "players"."birth_country", "players"."birth_year"
+"players"."first_name", 
+"players"."last_name", 
+"players"."birth_country", 
+"players"."birth_year"
 FROM "teams_players"
 JOIN "teams" ON "teams_players"."team_id" = "teams"."id"
 JOIN "players" ON "teams_players"."player_id" = "players"."id";
@@ -225,7 +227,10 @@ JOIN "players" ON "teams_players"."player_id" = "players"."id";
 -- Joing teams - teams_trainers - trainers
 CREATE VIEW "teams_trainers_view" AS
 SELECT "teams"."name", 
-"trainers"."first_name", "trainers"."last_name", "trainers"."birth_country", "trainers"."birth_year"
+"trainers"."first_name", 
+"trainers"."last_name", 
+"trainers"."birth_country", 
+"trainers"."birth_year"
 FROM "teams_trainers"
 JOIN "teams" ON "teams_trainers"."team_id" = "teams"."id"
 JOIN "trainers" ON "teams_trainers"."trainer_id" = "trainers"."id";
@@ -249,8 +254,15 @@ JOIN "users" ON "leagues_admins"."user_id" = "users"."id";
 -- tournaments_teams_view
 -- Joining tournaments - tournaments_teams - teams
 CREATE VIEW "tournaments_teams_view" AS
-SELECT "tournaments"."name", "tournaments"."status", "tournaments"."season", "tournaments"."format", "tournaments"."start_date", "tournaments"."end_date", "tournaments"."max_teams",
-"teams"."name", "teams"."foundation_year"
+SELECT "tournaments"."name", 
+"tournaments"."status", 
+"tournaments"."season", 
+"tournaments"."format", 
+"tournaments"."start_date", 
+"tournaments"."end_date", 
+"tournaments"."max_teams",
+"teams"."name", 
+"teams"."foundation_year"
 FROM "tournaments_teams"
 JOIN "tournaments" ON "tournaments_teams"."tournament_id" = "tournaments"."id"
 JOIN "teams" ON "tournaments_teams"."team_id" = "teams"."id";
