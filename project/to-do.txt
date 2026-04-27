@@ -1,4 +1,6 @@
-view for every table
+view for tables:
+    - matches (teams names)
+    - tournaments (league name)
 
 video script:
 1. idea

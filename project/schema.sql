@@ -196,13 +196,9 @@ CREATE TABLE "tournaments_teams" (
 -- matches_referees_view
 -- Joining "teams" - "matches" - "matches_referees" - "referees"
 CREATE VIEW "matches_referees_view" AS
-SELECT "matches"."team_a_id",
-"team_a"."name"        AS "team_A",
-"matches"."team_b_id",
+SELECT "team_a"."name"        AS "team_A",
 "team_b"."name"        AS "team_B",
 "matches"."date",
-"matches"."location",
-"matches"."status",
 "referees"."first_name",
 "referees"."last_name"
 FROM "matches_referees"
