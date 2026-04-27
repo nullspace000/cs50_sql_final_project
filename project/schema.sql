@@ -121,6 +121,7 @@ CREATE TABLE "matches" (
 -- Represents match events
 CREATE TABLE "match_events" (
     "id" INTEGER,
+    "match_id" INTEGER,
     "player_id" INTEGER,
     "team_id" INTEGER,
     "event_type" TEXT NOT NULL CHECK("event_type" IN ('goal', 'fault', 'yellow_card', 'red_card')),
