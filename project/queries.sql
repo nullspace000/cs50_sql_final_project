@@ -1,5 +1,8 @@
 -- Sample queries
 
+-- Seeding
+.read seeding/seeding.sql
+
 -- ###################
 -- User queries:
 -- ###################

@@ -23,10 +23,18 @@ In this section you should answer the following questions:
 
 * What should a user be able to do with your database?
   - Create their user account.
-  - Register themselves as a player or a manager.
-  - Create a team.
+  - Register themselves as a player.
+  - Create a team (automatically adds themselves to the team_admins table).
   - Add other players to their team.
-  -
+  - Add trainers to their team.
+  - Add other administrators to their team.
+  - Create a league (automatically adds themselves to the leagues_admins table).
+  - Create a tournament.
+  - Add teams to the tournament.
+  - Create a match.
+  - Add referees to the match through the matches_referees table.
+  - Register a goal in the match_events table (updates the score on the matches table)
+
 * What's beyond the scope of what a user should be able to do with your database?
 
 ## Representation
