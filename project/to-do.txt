@@ -1,5 +1,5 @@
 view for tables:
-    - tournaments (league name)
+
 
 matches : 102
 leagues : 155

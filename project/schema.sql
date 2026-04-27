@@ -192,20 +192,6 @@ CREATE TABLE "tournaments_teams" (
 -- # Views ########
 -- ################
 
--- matches_referees_view
--- Joining "teams" - "matches" - "matches_referees" - "referees"
-CREATE VIEW "matches_referees_view" AS
-SELECT "team_a"."name" AS "team_A",
-    "team_b"."name" AS "team_B",
-    "matches"."date",
-    "referees"."first_name",
-    "referees"."last_name"
-FROM "matches_referees"
-JOIN "matches"  ON  "matches_referees"."match_id" = "matches"."id"
-JOIN "teams" AS "team_a" ON "matches"."team_a_id" = "team_a"."id"
-JOIN "teams" AS "team_b" ON "matches"."team_b_id" = "team_b"."id"
-JOIN "referees" ON "matches_referees"."referee_id" = "referees"."id";
-
 -- matches
 -- Joining teams - matches - tournaments
 CREATE VIEW "matches_view" AS
@@ -226,6 +212,39 @@ JOIN "teams" AS "team_a" ON "matches"."team_a_id" = "team_a"."id"
 JOIN "teams" AS "team_b" ON "matches"."team_b_id" = "team_b"."id"
 JOIN "leagues" ON "tournaments"."league_id" = "leagues"."id";
 
+-- tournaments_view
+-- Joining leagues - tournaments
+CREATE VIEW "tournaments_view" AS
+SELECT "leagues"."name",
+    "tournaments"."name" AS "tournament_name",
+    "tournaments"."status",
+    "tournaments"."season",
+    "tournaments"."format",
+    "tournaments"."start_date",
+    "tournaments"."end_date",
+    "tournaments"."half_time",
+    "tournaments"."max_teams",
+    "tournaments"."entry_fee",
+    "tournaments"."points_per_win",
+    "tournaments"."points_per_draw",
+    "tournaments"."points_per_loss",
+    "tournaments"."creation_timestamp"
+FROM "tournaments"
+JOIN "leagues" ON "tournaments"."league_id" = "leagues"."id";
+
+-- matches_referees_view
+-- Joining "teams" - "matches" - "matches_referees" - "referees"
+CREATE VIEW "matches_referees_view" AS
+SELECT "team_a"."name" AS "team_A",
+    "team_b"."name" AS "team_B",
+    "matches"."date",
+    "referees"."first_name",
+    "referees"."last_name"
+FROM "matches_referees"
+JOIN "matches"  ON  "matches_referees"."match_id" = "matches"."id"
+JOIN "teams" AS "team_a" ON "matches"."team_a_id" = "team_a"."id"
+JOIN "teams" AS "team_b" ON "matches"."team_b_id" = "team_b"."id"
+JOIN "referees" ON "matches_referees"."referee_id" = "referees"."id";
 
 -- teams_players_view
 -- Joing teams - teams_players - players
