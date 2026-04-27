@@ -210,6 +210,7 @@ JOIN "referees" ON "matches_referees"."referee_id" = "referees"."id";
 -- Joining teams - matches - tournaments
 CREATE VIEW "matches_view" AS
 SELECT
+    "leagues"."name",
     "tournaments"."name",
     "team_a"."name" AS "team_A",
     "matches"."score_team_a",
@@ -222,7 +223,8 @@ SELECT
 FROM "matches"
 JOIN "tournaments" ON "matches"."tournament_id" = "tournaments"."id"
 JOIN "teams" AS "team_a" ON "matches"."team_a_id" = "team_a"."id"
-JOIN "teams" AS "team_b" ON "matches"."team_b_id" = "team_b"."id";
+JOIN "teams" AS "team_b" ON "matches"."team_b_id" = "team_b"."id"
+JOIN "leagues" ON "tournaments"."league_id" = "leagues"."id";
 
 
 -- teams_players_view

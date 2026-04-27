@@ -1,11 +1,10 @@
 view for tables:
-    - matches (teams names)
     - tournaments (league name)
 
 matches : 102
 leagues : 155
 teams : 57
-matches_view
+matches_view : 210
 
 video script:
 1. idea
