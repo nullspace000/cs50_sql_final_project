@@ -75,7 +75,7 @@ VALUES (
 );
 
 -- * Create a tournament.
--- * Bob creates the first tournament for his league
+-- * Bob creates the first tournament for his league.
 INSERT INTO "tournaments" ("league_id", "name", "status", "season", "format", "start_date", "end_date", "max_teams", "entry_fee_per_team")
 VALUES (
     (SELECT "id" FROM "leagues" WHERE "name" = 'Bobs Grand Florida League'),
@@ -90,6 +90,24 @@ VALUES (
 );
 
 -- * Add teams to the tournament.
+-- Example: Bob adds the Iron Vanguard team to Tournament #1
+INSERT INTO "tournaments_teams" ("tournament_id", "team_id")
+VALUES (
+    (SELECT "id" FROM "tournaments" WHERE "name" = 'Tournament #1'),
+    (SELECT "id" FROM "teams" WHERE "name" = 'Iron Vanguard')
+);
+-- Example: Bob adds his teams to his tournament.
+INSERT INTO "tournaments_teams" ("tournament_id", "team_id")
+VALUES (
+    (SELECT "id" FROM "tournaments" WHERE "name" = 'Tournament #1'),
+    (SELECT "id" FROM "teams" WHERE "name" = 'Bobs team')
+);
+
 -- * Create a match.
+INSERT INTO "matches" ("tournament_id", "team_a_id", "score_team_a", "team_b_id", "score_team_b", "location", "date", "status")
+VALUES (
+    ()
+)
+
 -- * Add referees to the match through the matches_referees table.
 -- * Register a goal in the match_events table (updates the score on the matches table)
