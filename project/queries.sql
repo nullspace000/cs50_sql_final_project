@@ -30,7 +30,16 @@ VALUES (
 );
 
 -- * Add other players to their team.
--- Example: Bob 
+-- Example: Bob adds himself to Bobs team.
+INSERT INTO "teams_players" ("player_id", "team_id", "shirt_number", "position")
+VALUES (
+    (SELECT "id" FROM "players" WHERE "first_name" = 'Bob'  AND "last_name" = 'Ross'),
+    (SELECT "id" FROM "teams" WHERE "name" = 'Bobs team'),
+    8,
+    'Forward'
+);
+
+-- Example: Bob adds Rosa Becker to Bobs team.
 INSERT INTO "teams_players" ("player_id", "team_id", "shirt_number", "position")
 VALUES (
     (SELECT "id" FROM "players" WHERE "first_name" = 'Rosa'  AND "last_name" = 'Becker'),
