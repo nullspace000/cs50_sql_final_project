@@ -56,7 +56,7 @@ CREATE TABLE "referees" (
 -- Represents teams
 CREATE TABLE "teams" (
     "id" INTEGER,
-    "name" TEXT NOT NULL,
+    "name" TEXT NOT NULL UNIQUE,
     "bio" TEXT NOT NULL,
     "foundation_year" NUMERIC NOT NULL,
     -- is_active will automatically be set to 'false' after two years of inactivity
@@ -142,7 +142,7 @@ CREATE TABLE "tournaments" (
     "end_date" NUMERIC NOT NULL,
     "half_time" INTEGER NOT NULL DEFAULT 45,
     "max_teams" INTEGER NOT NULL,
-    "entry_fee" NUMERIC,
+    "entry_fee_per_team" NUMERIC,
     "points_per_win" INTEGER DEFAULT 3,
     "points_per_draw" INTEGER DEFAULT 1,
     "points_per_loss" INTEGER DEFAULT 0,
@@ -250,9 +250,10 @@ JOIN "referees" ON "matches_referees"."referee_id" = "referees"."id";
 -- Joing teams - teams_players - players
 CREATE VIEW "teams_players_view" AS
 SELECT "teams"."name", 
-    "shirt_number", "position",
     "players"."first_name", 
-    "players"."last_name", 
+    "players"."last_name",
+    "shirt_number", 
+    "position", 
     "players"."birth_country", 
     "players"."birth_year"
 FROM "teams_players"
@@ -290,7 +291,7 @@ JOIN "users" ON "leagues_admins"."user_id" = "users"."id";
 -- tournaments_teams_view
 -- Joining tournaments - tournaments_teams - teams
 CREATE VIEW "tournaments_teams_view" AS
-SELECT "tournaments"."name", 
+SELECT "tournaments"."name",
     "tournaments"."status", 
     "tournaments"."season", 
     "tournaments"."format", 
@@ -302,4 +303,3 @@ SELECT "tournaments"."name",
 FROM "tournaments_teams"
 JOIN "tournaments" ON "tournaments_teams"."tournament_id" = "tournaments"."id"
 JOIN "teams" ON "tournaments_teams"."team_id" = "teams"."id";
- 

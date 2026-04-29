@@ -1,30 +1,95 @@
 -- Sample queries
 
--- Seeding
--- run: rebuild_database.sh
+-- To test queries, run: "rebuild_database.sh" beforehand to build and seed the database.
 
--- Create their user account.
+-- * Users should be able to:
+-- Hypothetical: Bob Ross happeded to be an avid soccer player.
+
+-- * Create their user account.
+-- Example: Bob creates his user account.
 INSERT INTO "users" ("email", "password")
 VALUES ('bob@gmail.com', '0123456789');
 
--- Register themselves as a player.
+-- * Register themselves as a player.
+-- Example: Bob registers themselves as a player.
 INSERT INTO "players" ("user_id", "first_name", "last_name", "birth_country", "birth_state", "birth_year")
 VALUES (
     (SELECT "id" FROM "users" WHERE "email" = 'bob@gmail.com'), 
-    'Bob', 'Ross', 'United States', 'Florida', 1942);
+    'Bob', 'Ross', 'United States', 'Florida', 1942
+    );
 
--- Create a team (automatically adds themselves to the team_admins table).
+-- * Create a team.
+-- Example: Bob creates a team called Bobs team.
 INSERT INTO "teams" ("name", "bio", "foundation_year", "is_active", "primary_color", "secondary_color")
 VALUES ('Bobs team', 'Team started by the legendary Bob Ross', 1960, 'true', 'Green', 'Blue');
+-- Automatically adds the creator to the team_admins table.
+INSERT INTO "teams_admins" ("user_id", "team_id")
+VALUES (
+    (SELECT "id" FROM "users" WHERE "email" = 'bob@gmail.com'),
+    (SELECT "id" FROM "teams" WHERE "name" = 'Bobs team')
+);
 
---INSERT INTO "teams_admins"
+-- * Add other players to their team.
+-- Example: Bob 
+INSERT INTO "teams_players" ("player_id", "team_id", "shirt_number", "position")
+VALUES (
+    (SELECT "id" FROM "players" WHERE "first_name" = 'Rosa'  AND "last_name" = 'Becker'),
+    (SELECT "id" FROM "teams" WHERE "name" = 'Bobs team'),
+    8,
+    'Forward'
+);
 
--- Add other players to their team.
--- Add trainers to their team.
--- Add other administrators to their team.
--- Create a league (automatically adds themselves to the leagues_admins table).
--- Create a tournament.
--- Add teams to the tournament.
--- Create a match.
--- Add referees to the match through the matches_referees table.
--- Register a goal in the match_events table (updates the score on the matches table)
+-- * Remove players from the team.
+-- Example: Bob removes Rosa Becker from Bobs team.
+DELETE FROM "teams_players" 
+WHERE "player_id" = (SELECT "id" FROM "players" WHERE "first_name" = 'Rosa'  AND "last_name" = 'Becker')
+AND "team_id" = (SELECT "id" FROM "teams" WHERE "name" = 'Bobs team');
+
+-- * Add trainers to their team.
+-- Example: Bob adds Kofi Mensah to his team as a trainer.
+INSERT INTO "teams_trainers" ("trainer_id", "team_id")
+VALUES (
+    (SELECT "id" FROM "trainers" WHERE "first_name" = 'Kofi'  AND "last_name" = 'Mensah'),
+    (SELECT "id" FROM "teams" WHERE "name" = 'Bobs team')
+);
+
+-- * Add other administrators to their team.
+-- Example: Bob adds the user dmacellen3@freewebs.com to his team ad an admin.
+INSERT INTO "teams_admins" ("user_id", "team_id")
+VALUES (
+    (SELECT "id" FROM "users" WHERE "email" = 'dmacellen3@freewebs.com'),
+    (SELECT "id" FROM "teams" WHERE "name" = 'Bobs team')
+);
+
+-- * Create a league 
+-- Example: Bob creates a league called Bobs Grand Florida League
+INSERT INTO "leagues" ("name", "description", "location_general")
+VALUES (
+    'Bobs Grand Florida League', 'Open league for local teams in Florida', 'Florida'
+);
+-- Automatically adds the creator to the leagues_admins table.
+INSERT INTO "leagues_admins" ("user_id", "league_id")
+VALUES (
+    (SELECT "id" FROM "users" WHERE "email" = 'bob@gmail.com'),
+    (SELECT "id" FROM "leagues" WHERE "name" = 'Bobs Grand Florida League')
+);
+
+-- * Create a tournament.
+-- * Bob creates the first tournament for his league
+INSERT INTO "tournaments" ("league_id", "name", "status", "season", "format", "start_date", "end_date", "max_teams", "entry_fee_per_team")
+VALUES (
+    (SELECT "id" FROM "leagues" WHERE "name" = 'Bobs Grand Florida League'),
+    'Tournament #1',
+    'Ongoing',
+    '2026',
+    'Knockout',
+    '28.05',
+    '28.08',
+    20,
+    '50$'
+);
+
+-- * Add teams to the tournament.
+-- * Create a match.
+-- * Add referees to the match through the matches_referees table.
+-- * Register a goal in the match_events table (updates the score on the matches table)

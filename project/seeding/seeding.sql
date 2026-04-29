@@ -79,10 +79,10 @@ SELECT * FROM "temp";
 DROP TABLE "temp";
 
 -- tournaments
-CREATE TEMP TABLE "temp" ("league_id" INTEGER, "name" TEXT, "status" TEXT, "season" INTEGER, "format" TEXT, "start_date" NUMERIC, "end_date" NUMERIC, "half_time" INTEGER, "max_teams" INTEGER, "entry_fee" NUMERIC, "points_per_win" INTEGER, "points_per_draw" INTEGER, "points_per_loss" INTEGER);
+CREATE TEMP TABLE "temp" ("league_id" INTEGER, "name" TEXT, "status" TEXT, "season" INTEGER, "format" TEXT, "start_date" NUMERIC, "end_date" NUMERIC, "half_time" INTEGER, "max_teams" INTEGER, "entry_fee_per_team" NUMERIC, "points_per_win" INTEGER, "points_per_draw" INTEGER, "points_per_loss" INTEGER);
 .mode csv
 .import --skip 1 seeding/tournaments_seed.csv temp
-INSERT INTO "tournaments" ("league_id", "name", "status", "season", "format", "start_date", "end_date", "half_time", "max_teams", "entry_fee", "points_per_win", "points_per_draw", "points_per_loss")
+INSERT INTO "tournaments" ("league_id", "name", "status", "season", "format", "start_date", "end_date", "half_time", "max_teams", "entry_fee_per_team", "points_per_win", "points_per_draw", "points_per_loss")
 SELECT * FROM "temp";
 DROP TABLE "temp";
 
