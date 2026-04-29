@@ -113,10 +113,14 @@ VALUES (
 );
 
 -- * Create a match.
-INSERT INTO "matches" ("tournament_id", "team_a_id", "score_team_a", "team_b_id", "score_team_b", "location", "date", "status")
+-- Example: Bob creates a match for Bobs teams and Iron Vanguard
+INSERT INTO "matches" ("tournament_id", "team_a_id", "team_b_id",  "location", "date")
 VALUES (
-    ()
-)
+    (SELECT "id" FROM "tournaments" WHERE "name" = 'Tournament #1'), 
+    (SELECT "id" FROM "teams" WHERE "name" = 'Bobs team'), 
+    (SELECT "id" FROM "teams" WHERE "name" = 'Iron Vanguard'), 
+    'Iron Vanguard Soccer Gym', "03.05"
+);
 
 -- * Add referees to the match through the matches_referees table.
 -- * Register a goal in the match_events table (updates the score on the matches table)
