@@ -121,14 +121,55 @@ VALUES (
     0,
     (SELECT "id" FROM "teams" WHERE "name" = 'Iron Vanguard'), 
     0,
-    'Iron Vanguard Soccer Gym', "03.05"
+    'Iron Vanguard Soccer Gym', 03.05
 );
 
 -- * Add referees to the match through the matches_referees table.
 -- Example: Bob adds Noah Bakker to the match as a referee
 INSERT INTO "matches_referees" ("referee_id", "match_id")
 VALUES (
-    (SELECT "id" FROM "referees" WHERE "first_name" = 'Noah' AND "last_name" = 'Bakker'), 3
+    (SELECT "id" FROM "referees" WHERE "first_name" = 'Noah' AND "last_name" = 'Bakker'), 
+    (
+        SELECT "id" FROM "matches" 
+        WHERE
+            "team_a_id" = (SELECT "id" FROM "teams" WHERE "name" = 'Bobs team')
+            AND "team_b_id" = (SELECT "id" FROM "teams" WHERE "name" = 'Iron Vanguard')
+            AND "date" = 03.05
+    )
 );
 
+-- * Start the match
+UPDATE "matches" SET "status" = 'Ongoing'
+WHERE "id" = (
+    SELECT "id" FROM "matches" WHERE
+        "team_a_id" = (SELECT "id" FROM "teams" WHERE "name" = 'Bobs team')
+        AND "team_b_id" = (SELECT "id" FROM "teams" WHERE "name" = 'Iron Vanguard')
+        AND "date" = 03.05
+    );
+
 -- * Register a goal in the match_events table (updates the score on the matches table)
+-- Example: Marco Osei scored a goal
+INSERT INTO "match_events" (
+    "match_id", "player_id", "team_id", "event_type"
+)
+VALUES (
+    (
+        SELECT "id" FROM "matches" 
+        WHERE
+            "team_a_id" = (SELECT "id" FROM "teams" WHERE "name" = 'Bobs team')
+            AND "team_b_id" = (SELECT "id" FROM "teams" WHERE "name" = 'Iron Vanguard')
+            AND "date" = 03.05
+    ), 
+    (SELECT "id" FROM "players" WHERE "first_name" = 'Marco' AND "last_name" = 'Osei'),
+    (SELECT "id" FROM "teams" WHERE "name" = 'Iron Vanguard'),
+    'goal'   
+);
+-- Update matches table entry
+UPDATE "matches" SET "score_team_b" = "score_team_b" + 1
+WHERE "id" = (
+        SELECT "id" FROM "matches" 
+        WHERE
+            "team_a_id" = (SELECT "id" FROM "teams" WHERE "name" = 'Bobs team')
+            AND "team_b_id" = (SELECT "id" FROM "teams" WHERE "name" = 'Iron Vanguard')
+            AND "date" = 03.05
+    );
