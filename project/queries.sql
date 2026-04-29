@@ -128,7 +128,7 @@ VALUES (
 -- Example: Bob adds Noah Bakker to the match as a referee
 INSERT INTO "matches_referees" ("referee_id", "match_id")
 VALUES (
-    (SELECT "id" FROM "referees" WHERE "first_name" = 'Noah' AND "last_name" = 'Bakker'),
-)
+    (SELECT "id" FROM "referees" WHERE "first_name" = 'Noah' AND "last_name" = 'Bakker'), 3
+);
 
 -- * Register a goal in the match_events table (updates the score on the matches table)
