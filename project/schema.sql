@@ -60,7 +60,7 @@ CREATE TABLE "teams" (
     "bio" TEXT NOT NULL,
     "foundation_year" NUMERIC NOT NULL,
     -- is_active will automatically be set to 'false' after two years of inactivity
-    "is_active" INTEGER  NOT NULL CHECK ("is_active" IN ('true', 'false')) DEFAULT 'true',
+    "is_active" TEXT  NOT NULL CHECK ("is_active" IN ('true', 'false')) DEFAULT 'true',
     "primary_color" TEXT NOT NULL,
     "secondary_color" TEXT NOT NULL,
     "creation_timestamp" NUMERIC NOT NULL DEFAULT CURRENT_TIMESTAMP,
