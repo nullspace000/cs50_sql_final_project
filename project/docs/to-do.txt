@@ -1,0 +1,10 @@
+queries:
+* What should a user be able to do with your database?
+- make docs folder
+  - Banned users seeding
+  - banned users view
+
+matches : 102
+leagues : 155
+teams : 57
+matches_view : 210

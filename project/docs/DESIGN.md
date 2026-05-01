@@ -116,7 +116,7 @@ The `teams` table includes:
 * `name`, which specifies the team's name as `TEXT`. A `UNIQUE` constraint ensures no two teams share the same name, and `NOT NULL` ensures it is always provided.
 * `bio`, which is a short description of the team stored as `TEXT NOT NULL`.
 * `foundation_year`, which specifies the year the team was founded, stored as `NUMERIC NOT NULL`.
-* `is_active`, which indicates whether the team is currently active, stored as `INTEGER`. A `CHECK` constraint restricts its value to `'true'` or `'false'`, and it defaults to `'true'`. As noted in the schema, this is intended to be automatically set to `'false'` after two years of inactivity.
+* `is_active`, which indicates whether the team is currently active, stored as `TEXT`. A `CHECK` constraint restricts its value to `'true'` or `'false'`, and it defaults to `'true'`. As noted in the schema, this is intended to be automatically set to `'false'` after two years of inactivity.
 * `primary_color`, which specifies the team's primary color as `TEXT NOT NULL`.
 * `secondary_color`, which specifies the team's secondary color as `TEXT NOT NULL`.
 * `creation_timestamp`, which specifies when the team record was created, stored as `NUMERIC` and defaulting to the current timestamp.

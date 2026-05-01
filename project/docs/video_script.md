@@ -1,23 +1,16 @@
-queries:
-* What should a user be able to do with your database?
-  - Banned users seeding
-  - banned users view
-
-matches : 102
-leagues : 155
-teams : 57
-matches_view : 210
-
-video script:
+# video script:
 Hello there.
 My name is Diego Couto and this is the video overview of my final project for the harvard cs50 introduction to sql course.
 In this video overview of my project, I will be...
 But, before we start, I quickly want to say thank you. I had an absolute blast solving the exercises and learning about how sql databases work. I can tell that tons of time and care were put into designing this course. So, thank you for making it and for making it available to all of us.
 
-1. idea
+## 1. idea
+    * Show diagram
+    This is my project.
+    Now, I know I went a bit big 
     explain idea
     how i got it and why i chose it
-2. diagram
+## 2. diagram
     After I decided on this local soccer league idea
     I was having trouble designing
     - diagram progression
@@ -29,3 +22,5 @@ But, before we start, I quickly want to say thank you. I had an absolute blast s
         Once I was happy with the state of the schema, I started writing some of the queries a user would run. But, I got frustrated with the fact that I didn't have any data to test my queries on.
         So I seeded my database using the import csv method.
         - Bash script
+
+## X. next steps to build the mobile app
