@@ -10,10 +10,19 @@ Video overview: <URL HERE> !@#$%!$#%wjfq;wo\
   - I'm not a soccer fan myself, but I have this Idea for an app: To represent football leagues. It would allow users to keep track of tournaments, create their own team, publish match location and so on.
 
 * Which people, places, things, etc. are you including in the scope of your database?
-  - Leagues, tournaments, matches, match events, teams, players, trainers, referees, and users.
+  - Leagues
+  - Tournaments
+  - Matches
+  - Match events
+  - Teams
+  - Players
+  - Trainers
+  - Referees
+  - Users
 
 * Which people, places, things, etc. are *outside* the scope of your database?
-  - Venues and player specific performance metrics.
+  - Venues 
+  - Player specific performance metrics.
 
 ## Functional Requirements
 
@@ -39,19 +48,13 @@ In this section you should answer the following questions:
   - Keeping track of entry fee payments (this would be a good feature in the app).
   - Google maps links for the venues/soccer fields.
   - Profile photos for the players, trainers and referees.
-  - Banners and logos for the teams.
+  - Banners and logos for the teams page.
 
 ## Representation
 
 Entities are captured in SQLite tables with the following schema...
 
 ### Entities
-
-* Which entities will you choose to represent in your database?
-  - 
-* What attributes will those entities have?
-* Why did you choose the types you did?
-* Why did you choose the constraints you did?
 
 This database includes the following entities:
 
