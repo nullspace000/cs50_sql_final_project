@@ -3,7 +3,7 @@
 -- To test queries, run: "rebuild_database.sh" beforehand to build and seed the database.
 
 -- * Users should be able to:
--- Hypothetical: Bob Ross happeded to be an avid soccer player.
+-- Hypothetical: Bob Ross happeded to be an avid soccer player and want to host a league in Florida.
 
 -- * Create their user account.
 -- Example: Bob creates his user account.
@@ -141,7 +141,8 @@ VALUES (
 -- * Start the match
 UPDATE "matches" SET "status" = 'Ongoing'
 WHERE "id" = (
-    SELECT "id" FROM "matches" WHERE
+    SELECT "id" FROM "matches" 
+    WHERE
         "team_a_id" = (SELECT "id" FROM "teams" WHERE "name" = 'Bobs team')
         AND "team_b_id" = (SELECT "id" FROM "teams" WHERE "name" = 'Iron Vanguard')
         AND "date" = 03.05
