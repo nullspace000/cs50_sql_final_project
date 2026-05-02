@@ -131,7 +131,7 @@ The `matches` table includes:
 * `score_team_a`, which stores the score of the first team as an `INTEGER`. This column is nullable, as the score may not yet be recorded for scheduled or ongoing matches.
 * `team_b_id`, which is the ID of the second team participating in the match as an `INTEGER NOT NULL`. A `FOREIGN KEY` constraint references the `id` column in the `teams` table.
 * `score_team_b`, which stores the score of the second team as an `INTEGER`, also nullable for the same reason as `score_team_a`.
-* `location`, which specifies where the match is held as `TEXT NOT NULL`.
+* `location`, which specifies where the match is held as `TEXT NOT NULL`. This could be used for google maps links in the app.
 * `date`, which specifies the date of the match stored as `NUMERIC NOT NULL`.
 * `status`, which specifies the current state of the match as `TEXT NOT NULL`. A `CHECK` constraint restricts its value to `'Scheduled'`, `'Ongoing'`, `'Finished'`, or `'Postponed'`, and it defaults to `'Scheduled'`.
 * `creation_timestamp`, which specifies when the match record was created, stored as `NUMERIC` and defaulting to the current timestamp.
