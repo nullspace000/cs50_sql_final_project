@@ -1,8 +1,9 @@
 queries:
 * What should a user be able to do with your database?
-- make docs folder
+  - move seeding from csv --> write multiple rows insert queries in queries.sql for the reviewers to be able to test the queries. Because I can't submit the entire seeding/ directory.  
   - Banned users seeding
   - banned users view
+
 
 matches : 102
 leagues : 155
