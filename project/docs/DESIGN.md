@@ -155,13 +155,13 @@ The `tournaments` table includes:
 * `league_id`, which is the ID of the league the tournament belongs to as an `INTEGER`. A `FOREIGN KEY` constraint references the `id` column in the `leagues` table.
 * `name`, which specifies the tournament's name as `TEXT NOT NULL`.
 * `status`, which specifies the current state of the tournament as `TEXT NOT NULL`. A `CHECK` constraint restricts its value to `'Scheduled'`, `'Ongoing'`, `'Finished'`, or `'Postponed'`, and it defaults to `'Scheduled'`.
-* `season`, which specifies the season the tournament belongs to as an `INTEGER`.
+* `season`, which specifies the season/year the tournament belongs to as an `INTEGER`.
 * `format`, which specifies the tournament format as `TEXT NOT NULL`. A `CHECK` constraint restricts its value to `'Knockout'`, `'Round Robin'`, or `'Groups'`, and it defaults to `'Knockout'`.
 * `start_date`, which specifies the tournament's start date as `NUMERIC NOT NULL`.
 * `end_date`, which specifies the tournament's end date as `NUMERIC NOT NULL`.
 * `half_time`, which specifies the duration of each half in minutes as an `INTEGER NOT NULL`, defaulting to `45`.
 * `max_teams`, which specifies the maximum number of teams allowed in the tournament as `INTEGER NOT NULL`.
-* `entry_fee_per_team`, which specifies the entry fee charged per team as `NUMERIC`. This column is nullable, as some tournaments may have no entry fee.
+* `entry_fee_per_team`, which specifies the entry fee charged per team as `NUMERIC`. This column is nullable, as some tournaments may have no entry fee. The currency is not specified anyware yet.
 * `points_per_win`, which specifies the number of points awarded for a win as an `INTEGER`, defaulting to `3`.
 * `points_per_draw`, which specifies the number of points awarded for a draw as an `INTEGER`, defaulting to `1`.
 * `points_per_loss`, which specifies the number of points awarded for a loss as an `INTEGER`, defaulting to `0`.
@@ -174,7 +174,7 @@ The `leagues` table includes:
 * `id`, which specifies the unique ID for the league as an `INTEGER`. This column thus has the `PRIMARY KEY` constraint applied.
 * `name`, which specifies the league's name as `TEXT NOT NULL`.
 * `description`, which provides a description of the league as `TEXT NOT NULL`.
-* `location_general`, which specifies the general geographic location of the league as `TEXT NOT NULL`.
+* `location_general`, which specifies the general geographic location of the league as `TEXT NOT NULL`. Could be a state, a city, etc.
 * `creation_timestamp`, which specifies when the league record was created, stored as `NUMERIC` and defaulting to the current timestamp.
 
 ### Relationships

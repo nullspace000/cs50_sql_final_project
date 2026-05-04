@@ -16,8 +16,8 @@ But, before we start, I quickly want to say thank you. I had an absolute blast s
     - diagram progression
         I'm really proud of this diagram.
         Making it really tickled my brain. And this is where most of the actual designing of the database took place.
-        It really helped me relate the 
-        This it how it started out if you are curious. As you can see, I was quite confused.
+        It really helped me visualize where the tables would relate to eachother.
+        This it how it started out if you are curious. As you can see, the main tables are here but I was quite confused about the relationships and how to represent them.
     - joining tables
         The hardest part was understanding these joing tables at the bottom. You see 
         "I was stuck for a good week, trying to understand how the many to many relationships would work in the database,  untill my profesors walked me through why we have to represent many to many relationships with a table of their own and then it made complete sence"
