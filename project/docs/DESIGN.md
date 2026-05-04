@@ -6,8 +6,8 @@ Video overview: <URL HERE> !@#$%!$#%wjfq;wo\
 
 ## Scope
 
-* What is the purpose of your database?
-  - I'm not a soccer fan myself, but I have this Idea for an app: To represent football leagues. It would allow users to keep track of tournaments, create their own team, publish match location and so on.
+* What is the purpose of your database?  
+  I'm not a soccer fan myself, but I have this Idea for an app: To represent football leagues. It would allow users to keep track of tournaments, create their own team, publish match location and so on.
 
 * Which people, places, things, etc. are you including in the scope of your database?
   - Leagues
@@ -181,7 +181,9 @@ The `leagues` table includes:
 
 The below entity relationship diagram describes the relationships among the entities in the database.
 
-![ER Diagram](cs50_Final_Project_2.1.png)
+![ER Diagram](diagram.png)
+
+#### General Relationsips
 
 The top part of the diagram represents the general relationships between the main 8 tables:
 
@@ -190,15 +192,50 @@ The top part of the diagram represents the general relationships between the mai
 * There are match events in matches.
 * There are players, trainers and referees in teams.
 
-The rest of the diagram represents Specific relationships:
+#### One to One & One to Many Relationships
 
-* 
-* One student is capable of making 0 to many submissions. 0, if they have yet to submit any work, and many if they submit to more than one problem (or make more than one submission to any one problem). A submission is made by one and only one student. It is assumed that students will submit individual work (not group work).
-* A submission is associated with one and only one problem. At the same time, a problem can have 0 to many submissions: 0 if no students have yet submitted work to that problem, and many if more than one student has submitted work for that problem.
-* A comment is associated with one and only one submission, whereas a submission can have 0 to many comments: 0 if an instructor has yet to comment on the submission, and many if an instructor leaves more than one comment on a submission.
-* A comment is written by one and only one instructor. At the same time, an instructor can write 0 to many comments: 0 if they have yet to comment on any students' work, and many if they have written more than 1 comment.
 
-Many to many relationships 
+#### Many to many relationships 
+
+The red joining tables at the bottom of the diagram represent many to many relationships. Next, I will explain said tables:
+
+* **teams_players:**  
+Represents a many-to-many relationship between `players` and `teams`. A player can belong to multiple teams, and a team can have multiple players.  
+The join table itself carries two additional attributes that describe the nature of each membership:
+  - `shirt_number`: the player's assigned shirt number within that specific team.
+  - `position`: the role the player holds in that team (`Goalkeeper`, `Defender`, `Midfielder`, or `Forward`).  
+  
+  The composite primary key is `(team_id, player_id)`, ordered so that the index is optimized for team-first lookups (e.g. "get all players in a team").
+
+* **teams_trainers:**  
+Represents a many-to-many relationship between `trainers` and `teams`. A trainer can work
+with multiple teams, and a team can have multiple trainers.
+
+  The composite primary key is `(team_id, trainer_id)`, ordered so that the index is optimized for team-first lookups.
+
+* **teams_admins:**  
+Represents a many-to-many relationship between `users` and `teams`. A user can administrate multiple teams, and a team can have multiple administrators.
+  
+  Note that while `teams_players` and `teams_trainers` link teams to their own dedicated entity tables (`players` and `trainers`), this table links directly to `users`. This means any user account can potentially be granted admin rights over a team, independently of whether they are also a player or trainer.
+
+  The composite primary key is `(team_id, user_id)`, ordered so that the index is optimized for team-first lookups.
+
+* **tournaments_teams:**  
+Represents a many-to-many relationship between `tournaments` and `teams`. A team can participate in multiple tournaments, and a tournament can have multiple teams.
+
+  The composite primary key is `(tournament_id, team_id)`, ordered so that the index is optimized for tournament-first lookups.
+
+* **leagues_admins:**  
+Represents a many-to-many relationship between `users` and `leagues`. A user can administrate multiple leagues, and a league can have multiple administrators.
+
+  Note that like `teams_admins`, this table links directly to `users`, meaning any user account can potentially be granted admin rights over a league, independently of whether they are also a player or trainer.
+
+  The composite primary key is `(league_id, user_id)`, ordered so that the index is optimized for league-first lookups.
+
+* **matches_referees:**  
+Represents a many-to-many relationship between `referees` and `matches`. A referee can officiate multiple matches, and a match can have multiple referees.
+
+  The composite primary key is `(match_id, referee_id)`, ordered so that the index is optimized for match-first lookups.
 
 ## Optimizations
 
