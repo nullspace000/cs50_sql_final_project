@@ -42,7 +42,7 @@ CREATE TABLE "trainers" (
 -- Represents referees
 CREATE TABLE "referees" (
     "id" INTEGER,
-    "user_id" INTEGER,
+    "user_id" INTEGER UNIQUE,
     "first_name" TEXT NOT NULL,
     "last_name" TEXT NOT NULL,
     "birth_country" TEXT NOT NULL,
