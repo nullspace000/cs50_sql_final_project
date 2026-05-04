@@ -190,7 +190,7 @@ The top part of the diagram represents the general relationships between the mai
 * There are match events in matches.
 * There are players, trainers and referees in teams.
 
-Specific relationships:
+The rest of the diagram represents Specific relationships:
 
 * 
 * One student is capable of making 0 to many submissions. 0, if they have yet to submit any work, and many if they submit to more than one problem (or make more than one submission to any one problem). A submission is made by one and only one student. It is assumed that students will submit individual work (not group work).
