@@ -192,10 +192,28 @@ The top part of the diagram represents the general relationships between the mai
 * There are match events in matches.
 * There are players, trainers and referees in teams.
 
-#### One to One & One to Many Relationships
-They are represented by all the lines that don't go to the red joining tables at the bottom of the diagram.
+#### Specific Relationships
+They are represented by all the lines, except the ones that go to the red joining tables at the bottom of the diagram.
 
-* **referees - users:** Only one referee that references  `user_id` can be created. It is a one and only one to one and only one relationship.
+* **referees - users:**  
+A referee must be linked to one and only one user via `user_id`, and each user can be linked to at most one referee. It is a one-and-only-one to zero-or-one relationship.
+  - Referee side: One-and-only-one: every referee must have a user (NOT NULL), and can only have one (UNIQUE).
+  - User side: Zero-or-one: a user may or may not have an associated referee entry, but cannot have more than one.
+
+* **trainers - users:**  
+A trainer must be linked to one and only one user via `user_id`, and each user can be linked to at most one trainer. It is a one-and-only-one to zero-or-one relationship just like 'referees - users' above.
+
+* **players - users:**  
+A player must be linked to one and only one user via `user_id`, and each user can be linked to at most one player. It is a one-and-only-one to zero-or-one relationship just like 'referees - users' and 'trainers - users' above.
+
+* **matches - match_events:**  
+A match can have zero or many match events, and each match event must belong to one and only one match via `match_id`. It is a zero-or-many to one-and-only-one relationship.
+
+* **matches - teams:**  
+A match must have exactly two teams (one and only one for `team_a_id` and one and only one for `team_b_id`), and a team can participate in zero or many matches. It is a zero-or-many to one-and-only-one relation ship, with two foreign keys linking each match to exactly two distinct teams.
+
+* **players - match_events:**  
+A player can have zero or many match events, and each match event must be linked to one and only one player via `player_id`. It is a zero-or-many to one-and-only-one relationship.
 
 #### Many to Many Relationships 
 
@@ -210,8 +228,7 @@ The join table itself carries two additional attributes that describe the nature
   The composite primary key is `(team_id, player_id)`, ordered so that the index is optimized for team-first lookups (e.g. "get all players in a team").
 
 * **teams_trainers:**  
-Represents a many-to-many relationship between `trainers` and `teams`. A trainer can work
-with multiple teams, and a team can have multiple trainers.
+Represents a many-to-many relationship between `trainers` and `teams`. A trainer can work with multiple teams, and a team can have multiple trainers.
 
   The composite primary key is `(team_id, trainer_id)`, ordered so that the index is optimized for team-first lookups.
 
