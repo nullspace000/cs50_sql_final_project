@@ -2,18 +2,18 @@
 
 -- Represents users
 CREATE TABLE "users" (
-    "id" INTEGER,
     "email" TEXT NOT NULL UNIQUE,
     "password" TEXT NOT NULL CHECK(LENGTH("password") >= 10),
     "creation_timestamp" NUMERIC NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "banned" TEXT NOT NULL CHECK("banned" IN ('true', 'false')) DEFAULT 'false',
     PRIMARY KEY("id")
+    "id" INTEGER,
 );
 
 -- Represents players
 CREATE TABLE "players" (
     "id" INTEGER,
-    "user_id" INTEGER UNIQUE,
+    "user_id" INTEGER UNIQUE NOT NULL,
     "first_name" TEXT NOT NULL,
     "last_name" TEXT NOT NULL,
     "birth_country" TEXT NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE "players" (
 -- Represents trainers
 CREATE TABLE "trainers" (
     "id" INTEGER,
-    "user_id" INTEGER UNIQUE,
+    "user_id" INTEGER UNIQUE NOT NULL,
     "first_name" TEXT NOT NULL,
     "last_name" TEXT NOT NULL,
     "birth_country" TEXT NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE "trainers" (
 -- Represents referees
 CREATE TABLE "referees" (
     "id" INTEGER,
-    "user_id" INTEGER UNIQUE,
+    "user_id" INTEGER UNIQUE NOT NULL,
     "first_name" TEXT NOT NULL,
     "last_name" TEXT NOT NULL,
     "birth_country" TEXT NOT NULL,

@@ -193,9 +193,11 @@ The top part of the diagram represents the general relationships between the mai
 * There are players, trainers and referees in teams.
 
 #### One to One & One to Many Relationships
+They are represented by all the lines that don't go to the red joining tables at the bottom of the diagram.
 
+* **referees - users:** Only one referee that references  `user_id` can be created. It is a one and only one to one and only one relationship.
 
-#### Many to many relationships 
+#### Many to Many Relationships 
 
 The red joining tables at the bottom of the diagram represent many to many relationships. Next, I will explain said tables:
 
