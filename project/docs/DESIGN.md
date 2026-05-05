@@ -126,7 +126,7 @@ The `teams` table includes:
 The `matches` table includes:
  
 * `id`, which specifies the unique ID for the match as an `INTEGER`. This column thus has the `PRIMARY KEY` constraint applied.
-* `tournament_id`, which is the ID of the tournament the match belongs to as an `INTEGER`. A `FOREIGN KEY` constraint references the `id` column in the `tournaments` table.
+* `tournament_id`, which is the ID of the tournament the match belongs to as an `INTEGER`. A `FOREIGN KEY` constraint references the `id` column in the `tournaments` table. It is nullable. This way, users can create standalone matches without a tournament. 
 * `team_a_id`, which is the ID of the first team participating in the match as an `INTEGER NOT NULL`. A `FOREIGN KEY` constraint references the `id` column in the `teams` table.
 * `score_team_a`, which stores the score of the first team as an `INTEGER`. This column is nullable, as the score may not yet be recorded for scheduled or ongoing matches.
 * `team_b_id`, which is the ID of the second team participating in the match as an `INTEGER NOT NULL`. A `FOREIGN KEY` constraint references the `id` column in the `teams` table.
@@ -152,7 +152,7 @@ The `match_events` table includes:
 The `tournaments` table includes:
  
 * `id`, which specifies the unique ID for the tournament as an `INTEGER`. This column thus has the `PRIMARY KEY` constraint applied.
-* `league_id`, which is the ID of the league the tournament belongs to as an `INTEGER`. A `FOREIGN KEY` constraint references the `id` column in the `leagues` table.
+* `league_id`, which is the ID of the league the tournament belongs to as an `INTEGER`. A `FOREIGN KEY` constraint references the `id` column in the `leagues` table. It is nullable. This way, users can create standalone tournaments without a league.
 * `name`, which specifies the tournament's name as `TEXT NOT NULL`.
 * `status`, which specifies the current state of the tournament as `TEXT NOT NULL`. A `CHECK` constraint restricts its value to `'Scheduled'`, `'Ongoing'`, `'Finished'`, or `'Postponed'`, and it defaults to `'Scheduled'`.
 * `season`, which specifies the season/year the tournament belongs to as an `INTEGER`.
@@ -214,6 +214,16 @@ A match must have exactly two teams (one and only one for `team_a_id` and one an
 
 * **players - match_events:**  
 A player can have zero or many match events, and each match event must be linked to one and only one player via `player_id`. It is a zero-or-many to one-and-only-one relationship.
+
+* **teams - match_events:**  
+A team can have zero or many match events, and each match event must be linked to one and only one team via `team_id`. It is a zero-or-many to one-and-only-one relationship.
+
+* **tournaments - matches:**  
+A tournament can have zero or many matches, and each match can belong to one tournament via `tournament_id`. It is a zero-or-many to zero-or-one relationship. This way, users can create standalone matches without a tournament. 
+
+* **leagues - tournaments:**  
+A league can have zero or many tournaments, and each tournament can belong to one league via `league_id`. It is a zero-or-many to zero-or-one relationship. This way, users can create standalone tournaments without a league.
+
 
 #### Many to Many Relationships 
 
