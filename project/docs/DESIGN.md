@@ -231,7 +231,7 @@ The red joining tables at the bottom of the diagram represent many to many relat
 
 * **teams_players:**  
 Represents a many-to-many relationship between `players` and `teams`. A player can belong to multiple teams, and a team can have multiple players.  
-The join table itself carries two additional attributes that describe the nature of each membership:
+The join table itself carries two additional membership attributes specific to the team:
   - `shirt_number`: the player's assigned shirt number within that specific team.
   - `position`: the role the player holds in that team (`Goalkeeper`, `Defender`, `Midfielder`, or `Forward`).  
   
