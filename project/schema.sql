@@ -2,12 +2,12 @@
 
 -- Represents users
 CREATE TABLE "users" (
+    "id" INTEGER,
     "email" TEXT NOT NULL UNIQUE,
     "password" TEXT NOT NULL CHECK(LENGTH("password") >= 10),
     "creation_timestamp" NUMERIC NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "banned" TEXT NOT NULL CHECK("banned" IN ('true', 'false')) DEFAULT 'false',
     PRIMARY KEY("id")
-    "id" INTEGER,
 );
 
 -- Represents players
@@ -196,8 +196,8 @@ CREATE TABLE "tournaments_teams" (
 -- Joining teams - matches - tournaments
 CREATE VIEW "matches_view" AS
 SELECT
-    "leagues"."name",
-    "tournaments"."name",
+    "leagues"."name" AS "league_name",
+    "tournaments"."name" AS "tournament_name",
     "team_a"."name" AS "team_A",
     "matches"."score_team_a",
     "team_b"."name" AS "team_B",
@@ -224,7 +224,7 @@ SELECT "leagues"."name",
     "tournaments"."end_date",
     "tournaments"."half_time",
     "tournaments"."max_teams",
-    "tournaments"."entry_fee",
+    "tournaments"."entry_fee_per_team",
     "tournaments"."points_per_win",
     "tournaments"."points_per_draw",
     "tournaments"."points_per_loss",

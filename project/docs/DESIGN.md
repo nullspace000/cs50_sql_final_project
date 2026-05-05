@@ -268,9 +268,19 @@ Represents a many-to-many relationship between `referees` and `matches`. A refer
 
 ## Optimizations
 
-In this section you should answer the following questions:
+Which optimizations (e.g., indexes, views) did you create? Why?
 
-* Which optimizations (e.g., indexes, views) did you create? Why?
+### Views
+
+#### matches_view
+Joins teams - matches - tournaments.  
+This view provides a complete, human-readable summary of each match, resolving all foreign key IDs into their actual names. 
+
+#### tournaments_view
+Joins leagues - tournaments.  
+This view provides a complete, human-readable summary of each tournaments, resolving all foreign key IDs into their actual names.
+
+### Indexes
 
 ## Limitations
 
