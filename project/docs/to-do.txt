@@ -1,7 +1,6 @@
 to do:
-- finish describing relationships in DESIGN.md
-- fix diagram relationshiip arrow direction.
-- update diagram relationship arrows symbols.
+- ## Optimizations
+- ## Limitations
 - update What should a user be able to do with your database?
 - move seeding from csv --> write multiple rows insert queries in queries.sql for the reviewers to be able to test the queries. Because I can't submit the entire seeding/ directory.
 
