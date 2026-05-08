@@ -237,16 +237,16 @@ JOIN "leagues" ON "tournaments"."league_id" = "leagues"."id";
 -- Joining "matches" - "match_events" - "players" - "teams" - "referees"
 CREATE VIEW "match_events_view" AS
 SELECT
+    "match_events"."id" AS "event_id",
     "match_events"."event_type",
     "players"."first_name" AS "player_first_name",
     "players"."last_name" AS "player_last_name",
-    "teams"."name" AS "team",
-    "match_events"."id" AS "event_id",
+    "teams"."name" AS "player_team",
+    "referees"."first_name" AS "referee_first_name",
+    "referees"."last_name" AS "referee_last_name",
     "team_a"."name" AS "match_team_A",
     "team_b"."name" AS "match_team_B",
     "matches"."date" AS "match_date",
-    "referees"."first_name" AS "referee_first_name",
-    "referees"."last_name" AS "referee_last_name",
     "match_events"."creation_timestamp"
 FROM "match_events"
 JOIN "matches" ON "match_events"."match_id" = "matches"."id"

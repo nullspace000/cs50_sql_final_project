@@ -6,10 +6,14 @@ But, before we start, I quickly want to say thank you. I had an absolute blast s
 
 ## 1. idea
     * Show diagram
-    This is my project.
-    Now, I know I went a bit big 
     explain idea
-    how i got it and why i chose it
+    how i got it and why i chose it / making the app
+    This is my project.
+        Now, I know I went a bit big. But, in my defence, I didn't think the scope for this idea could get this large.
+        I kept comming up with ideas and going 'oh, i could add this! oh, i could add that! 
+        And this has been my life between classes for the last three months.
+        And I will continue to develop this database for the app (i have tons of stuff to do) but, for the purpose of this final proyect, I believe it's in a worthy enough state for submition.
+    
 ## 2. diagram
     After I decided on this local soccer league idea
     I was having trouble designing

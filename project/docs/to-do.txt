@@ -1,8 +1,7 @@
 # to do:
-- update match_events view
 - match_events.minute column: subtract start match time from match event timestamp 
 - add id column to some views
-- ## Limitations
+- ## Limitations write
 - update What should a user be able to do with your database?
 - move seeding from csv --> write multiple rows insert queries in queries.sql for the reviewers to be able to test the queries. Because I can't submit the entire seeding/ directory.
 
