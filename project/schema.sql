@@ -192,10 +192,20 @@ CREATE TABLE "tournaments_teams" (
 -- # Indexes ######
 -- ################
 
--- players first & last names
--- trainers first & last names
--- referees first & last names
 -- users emails
+CREATE INDEX "users_emails" ON "users" ("email");
+
+-- players first & last names
+CREATE INDEX "players_first_names" ON "players" ("first_name");
+CREATE INDEX "players_last_names" ON "players" ("last_name");
+
+-- trainers first & last names
+CREATE INDEX "trainers_first_names" ON "trainers" ("first_name");
+CREATE INDEX "trainers_last_names" ON "trainers" ("last_name");
+
+-- referees first & last names
+CREATE INDEX "referees_first_names" ON "referees" ("first_name");
+CREATE INDEX "referees_last_names" ON "referees" ("last_name");
 
 -- ################
 -- # Views ########

@@ -312,7 +312,7 @@ For most of the queries in `queries.sql`, it is common for players, trainers and
 So I created an index for these columns.
 
 - **email**  
-The same is true for `users.email`. So I also created an index there.
+The same is true for `users.email`. Users are rearched for by their email. So I also created an index there aswell.
 
 ## Limitations
 
