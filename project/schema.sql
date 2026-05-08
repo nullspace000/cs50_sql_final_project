@@ -19,7 +19,7 @@ CREATE TABLE "players" (
     "birth_country" TEXT NOT NULL,
     "birth_state" TEXT NOT NULL,
     "birth_year" INTEGER NOT NULL,
-    "last_game" INTEGER,
+    "last_game" INTEGER, --to be implemented
     "creation_timestamp" NUMERIC NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY("id"),
     FOREIGN KEY("user_id") REFERENCES "users"("id")

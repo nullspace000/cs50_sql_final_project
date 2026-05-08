@@ -1,14 +1,15 @@
 # to do:
-- match_events.minute column: subtract start match time from match event timestamp 
+
+video:
+- add subtitles
+
+DESIGN.md
+- add diagram final form
+
+database:
 - add id column to some views
-- ## Limitations write
-- update What should a user be able to do with your database?
-- move seeding from csv --> write multiple rows insert queries in queries.sql for the reviewers to be able to test the queries. Because I can't submit the entire seeding/ directory.
+- update What should a user be able to do with your database? based on queries.sql
 
 queries:
-  - merge insert queries that go to the same table in queries.slq   
   - Banned users seeding
   - banned users view
-  - update diagram insertion in DESIGN.md
-
-

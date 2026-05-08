@@ -1,16 +1,26 @@
 # video script:
-Hello there.
+
+* opening section
+    your project’s title;
+    your name;
+    your GitHub and edX usernames;
+    your city and country;
+    and, the date you have recorded this video.
+
+Welcome.
 My name is Diego Couto and this is the video overview of my final project for the harvard cs50 introduction to sql course.
 In this video overview of my project, I will be...
-But, before we start, I quickly want to say thank you. I had an absolute blast solving the exercises and learning about how sql databases work. I can tell that tons of time and care were put into designing this course. So, thank you for making it and for making it available to all of us.
+But, before we start, I quickly want to say thank you. I had an absolute blast solving the exercises and learning about how sql databases work. So much so that databases are now my favorite part of development. I can tell that tons of time and care were put into designing this course. So, thank you for making it and for making it available to all of us.
 
 ## 1. idea
-    * Show diagram
-    explain idea
-    how i got it and why i chose it / making the app
-    This is my project.
-        Now, I know I went a bit big. But, in my defence, I didn't think the scope for this idea could get this large.
-        I kept comming up with ideas and going 'oh, i could add this! oh, i could add that! 
+    
+    * explain idea
+    The idea that I landed on in the end was to represent local soccer leagues. I chose this one becuase I wanted something that I could apply to real life, something that I could scale and tourn into a service if I wanted, and my brothers and many of my friends play in these small leagues and have expressed interest multiple times in an app to manage them. So I just put two and two together.
+
+    So, this is my project.
+    * Scroll though diagram
+        Now, I know I went a bit big. The scope did get out of hand but, in my defence, I didn't think it could get this large.
+        I kept comming up with ideas and going 'oh, i could add this! i could change that! 
         And this has been my life between classes for the last three months.
         And I will continue to develop this database for the app (i have tons of stuff to do) but, for the purpose of this final proyect, I believe it's in a worthy enough state for submition.
     

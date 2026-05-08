@@ -22,11 +22,12 @@ Video overview: <URL HERE> !@#$%!$#%wjfq;wo\
 
 * Which people, places, things, etc. are *outside* the scope of your database?
   - Venues 
-  - Player specific performance metrics.
+  - Player specific performance metrics
+  - Extra time and tiebreaker results.
+  - Substitutions and injuries
+  These are described better in the ## Limitations section.
 
 ## Functional Requirements
-
-In this section you should answer the following questions:
 
 * What should a user be able to do with your database?
   - Create their user account.
@@ -317,7 +318,15 @@ The same is true for `users.email`. Users are rearched for by their email. So I 
 
 ## Limitations
 
-* What are the limitations of your design?
-* What might your database not be able to represent very well?
+* **Player statistics:** There is no dedicated `statistics` table. Any career or per-tournament aggregations (goals scored, cards received, matches played) must be computed on the fly from match_events, which becomes increasingly expensive. The statistics feature will be key for the app.
 
-* Extra time and penalty shootouts — For Knockout format tournaments, there is no mechanism to represent tiebreakers, extra time, or shootout results.
+* **Match event timing:** `match_events` has no `minute` column. To set its value, I have to subtract the `creation_timestamp` of the `match_event` from the `creation_timestamp` of the `Start the match` query (line 160 in queries.sql).
+Formula: `(event_timestamp - match_start_timestamp = match_minute)
+
+* **Locations:** At the moment, match locations and league general locations are simply represented as TEXT. The intention is for these to have integration with google maps for better usability.
+
+* **Tournament structure:** The groups format is a valid option for the tournaments, but it is not supported yet. I have to make a `teams_groups` table to define which teams belong to which group within a tournament.
+
+* **teams_players history:** There is no way to record when a player joined or left a team. If a player moves teams, the old membership represented in `teams_players` is simply deleted with no record.
+
+* **Substitutions and injuries:** `event_type` only supports goal, fault, yellow_card, and red_card. Substitutions, offsides, penalty kicks, own goals, and injuries are to be added as event types for the `event_type` column of the `match_events` table.
