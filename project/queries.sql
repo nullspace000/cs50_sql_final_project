@@ -170,7 +170,7 @@ WHERE "id" = (
 -- * Register a goal in the match_events table (updates the score on the matches table)
 -- Example: Marco Osei scored a goal
 INSERT INTO "match_events" (
-    "match_id", "player_id", "team_id", "event_type"
+    "match_id", "player_id", "team_id", "event_type", "responsible_referee"
 )
 VALUES (
     (
@@ -182,7 +182,8 @@ VALUES (
     ), 
     (SELECT "id" FROM "players" WHERE "first_name" = 'Marco' AND "last_name" = 'Osei'),
     (SELECT "id" FROM "teams" WHERE "name" = 'Iron Vanguard'),
-    'goal'   
+    'goal',
+    (SELECT "id" FROM "referees" WHERE "first_name" = 'Noah' AND "last_name" = 'Bakker')   
 );
 -- Update matches table entry
 UPDATE "matches" SET "score_team_b" = "score_team_b" + 1
