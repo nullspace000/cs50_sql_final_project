@@ -273,7 +273,8 @@ Which optimizations (e.g., indexes, views) did you create? Why?
 ### Views
 
 #### matches_view
-This view provides a complete, human-readable summary of each match, resolving all foreign key IDs (`leagues.name`, `tournaments.name`, `team_a.name` and `team_b.name`) into their actual names.
+This is the most usefull view, as it represents most of the database structure, from `leagues` to `teams`. 
+It provides a complete, human-readable summary of each match, resolving all foreign key IDs (`leagues.name`, `tournaments.name`, `team_a.name` and `team_b.name`) into their actual names.
 Inner joins tables `matches`, `tournaments`, `teams` and `leagues`.
 
 #### tournaments_view
@@ -305,6 +306,12 @@ This view provides a complete, human-readable summary of each tournament's regis
 Inner joins tables `tournaments_teams`, `tournaments` and `teams`.
 
 ### Indexes
+
+#### first & last names
+For most of the queries in `queries.sql`, it is common for players, trainers and referees to be added and removed from teams, found by their `first_name` and `last_name` in the queries.
+So I created an index for these columns.
+
+The same is true for `users.email`. So I also created an index there.
 
 ## Limitations
 
