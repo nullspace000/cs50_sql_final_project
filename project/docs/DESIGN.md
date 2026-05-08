@@ -273,12 +273,13 @@ Which optimizations (e.g., indexes, views) did you create? Why?
 ### Views
 
 #### matches_view
-Joins teams - matches - tournaments.  
-This view provides a complete, human-readable summary of each match, resolving all foreign key IDs into their actual names. 
+This view provides a complete, human-readable summary of each match, resolving all foreign key IDs (`leagues.name`, `tournaments.name`, `team_a.name` and `team_b.name`) into their actual names.
+Inner joins tables `matches`, `tournaments`, `teams` and `leagues`.
 
 #### tournaments_view
-Joins leagues - tournaments.  
-This view provides a complete, human-readable summary of each tournaments, resolving all foreign key IDs into their actual names.
+This view provides a complete, human-readable summary of each tournaments, resolving the foreign key ID `leagues.name` into their actual names.
+Inner joins tables `tournaments` and `leagues`.
+
 
 ### Indexes
 

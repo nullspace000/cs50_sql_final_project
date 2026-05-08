@@ -193,7 +193,7 @@ CREATE TABLE "tournaments_teams" (
 -- ################
 
 -- matches
--- Joining teams - matches - tournaments
+-- Joining teams - matches - tournaments - leagues
 CREATE VIEW "matches_view" AS
 SELECT
     "leagues"."name" AS "league_name",
