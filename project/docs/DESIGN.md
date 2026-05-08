@@ -280,12 +280,33 @@ Inner joins tables `matches`, `tournaments`, `teams` and `leagues`.
 This view provides a complete, human-readable summary of each tournaments, resolving the foreign key ID `leagues.name` into their actual names.
 Inner joins tables `tournaments` and `leagues`.
 
+#### matches_referees_view
+This view provides a complete, human-readable summary of each match's assigned referees, resolving all foreign key IDs (`team_a.name`, `team_b.name`, `referees.first_name` and `referees.last_name`) into their actual names.
+Inner joins tables `matches_referees`, `matches`, `teams` and `referees`.
+
+#### teams_players_view
+This view provides a complete, human-readable summary of each team's registered players, resolving foreign key IDs (`teams.name`, `players.first_name` and `players.last_name`) into their actual names.
+Inner joins tables `teams_players`, `teams` and `players`.
+
+#### teams_trainers_view
+This view provides a complete, human-readable summary of each team's assigned trainers, resolving foreign key IDs (`teams.name`, `trainers.first_name` and `trainers.last_name`) into their actual names.
+Inner joins tables `teams_trainers`, `teams` and `trainers`.
+
+#### teams_admins_view
+This view provides a complete, human-readable summary of each team's administrators, resolving foreign key IDs (`teams.name` and `users.email`) into their actual names.
+Inner joins tables `teams_admins`, `teams` and `users`.
+
+#### leagues_admins_view
+This view provides a complete, human-readable summary of each league's administrators, resolving foreign key IDs (`leagues.name` and `users.email`) into their actual name and email respectively.
+Inner joins tables `leagues_admins`, `leagues` and `users`.
+
+#### tournaments_teams_view
+This view provides a complete, human-readable summary of each tournament's registered teams, resolving foreign key IDs (`tournaments.name` and `teams.name`) into their actual names.
+Inner joins tables `tournaments_teams`, `tournaments` and `teams`.
 
 ### Indexes
 
 ## Limitations
-
-In this section you should answer the following questions:
 
 * What are the limitations of your design?
 * What might your database not be able to represent very well?
