@@ -192,7 +192,10 @@ CREATE TABLE "tournaments_teams" (
 -- # Indexes ######
 -- ################
 
--- player 
+-- players first & last names
+-- trainers first & last names
+-- referees first & last names
+-- users emails
 
 -- ################
 -- # Views ########
@@ -202,15 +205,15 @@ CREATE TABLE "tournaments_teams" (
 -- Joining teams - matches - tournaments - leagues
 CREATE VIEW "matches_view" AS
 SELECT
-    "leagues"."name" AS "league_name",
-    "tournaments"."name" AS "tournament_name",
+    "leagues"."name" AS "league",
+    "tournaments"."name" AS "tournament",
     "team_a"."name" AS "team_A",
     "matches"."score_team_a",
     "team_b"."name" AS "team_B",
     "matches"."score_team_b",
-    "matches"."location",
-    "matches"."date",
-    "matches"."status",
+    "matches"."location" AS "match_location",
+    "matches"."date" AS "match_date",
+    "matches"."status" AS "match_status",
     "matches"."creation_timestamp"
 FROM "matches"
 JOIN "tournaments" ON "matches"."tournament_id" = "tournaments"."id"
@@ -218,10 +221,74 @@ JOIN "teams" AS "team_a" ON "matches"."team_a_id" = "team_a"."id"
 JOIN "teams" AS "team_b" ON "matches"."team_b_id" = "team_b"."id"
 JOIN "leagues" ON "tournaments"."league_id" = "leagues"."id";
 
+-- matches_referees_view
+-- Joining "teams" - "matches" - "matches_referees" - "referees"
+CREATE VIEW "matches_referees_view" AS
+SELECT 
+    "team_a"."name" AS "team_A",
+    "team_b"."name" AS "team_B",
+    "matches"."date" AS "match_date",
+    "referees"."first_name",
+    "referees"."last_name"
+FROM "matches_referees"
+JOIN "matches"  ON  "matches_referees"."match_id" = "matches"."id"
+JOIN "teams" AS "team_a" ON "matches"."team_a_id" = "team_a"."id"
+JOIN "teams" AS "team_b" ON "matches"."team_b_id" = "team_b"."id"
+JOIN "referees" ON "matches_referees"."referee_id" = "referees"."id";
+
+-- teams_players_view
+-- Joing teams - teams_players - players
+CREATE VIEW "teams_players_view" AS
+SELECT 
+    "teams"."name" AS "team", 
+    "players"."first_name", 
+    "players"."last_name",
+    "shirt_number", 
+    "position", 
+    "players"."birth_country", 
+    "players"."birth_year"
+FROM "teams_players"
+JOIN "teams" ON "teams_players"."team_id" = "teams"."id"
+JOIN "players" ON "teams_players"."player_id" = "players"."id";
+
+-- teams_trainers_view
+-- Joing teams - teams_trainers - trainers
+CREATE VIEW "teams_trainers_view" AS
+SELECT 
+    "teams"."name" AS "team", 
+    "trainers"."first_name", 
+    "trainers"."last_name", 
+    "trainers"."birth_country", 
+    "trainers"."birth_year"
+FROM "teams_trainers"
+JOIN "teams" ON "teams_trainers"."team_id" = "teams"."id"
+JOIN "trainers" ON "teams_trainers"."trainer_id" = "trainers"."id";
+
+-- teams_admins_view
+-- Joining teams - teams_admins - users
+CREATE VIEW "teams_admins_view" AS
+SELECT 
+    "teams"."name" AS "team", 
+    "users"."email" AS "admin_account"
+FROM "teams_admins"
+JOIN "teams" ON "teams_admins"."team_id" = "teams"."id"
+JOIN "users" ON "teams_admins"."user_id" = "users"."id";
+
+-- leagues_admins_view
+-- Joining leagues - leagues_admins - users
+CREATE VIEW "leagues_admins_view" AS
+SELECT 
+    "leagues"."name" AS "league", 
+    "users"."email" AS "admin_account"
+FROM "leagues_admins"
+JOIN "leagues" ON "leagues_admins"."league_id" = "leagues"."id"
+JOIN "users" ON "leagues_admins"."user_id" = "users"."id";
+
 -- tournaments_view
 -- Joining leagues - tournaments
 CREATE VIEW "tournaments_view" AS
-SELECT "leagues"."name",
+SELECT 
+    "leagues"."name" AS "league_name",
     "tournaments"."name" AS "tournament_name",
     "tournaments"."status",
     "tournaments"."season",
@@ -238,74 +305,15 @@ SELECT "leagues"."name",
 FROM "tournaments"
 JOIN "leagues" ON "tournaments"."league_id" = "leagues"."id";
 
--- matches_referees_view
--- Joining "teams" - "matches" - "matches_referees" - "referees"
-CREATE VIEW "matches_referees_view" AS
-SELECT "team_a"."name" AS "team_A",
-    "team_b"."name" AS "team_B",
-    "matches"."date",
-    "referees"."first_name",
-    "referees"."last_name"
-FROM "matches_referees"
-JOIN "matches"  ON  "matches_referees"."match_id" = "matches"."id"
-JOIN "teams" AS "team_a" ON "matches"."team_a_id" = "team_a"."id"
-JOIN "teams" AS "team_b" ON "matches"."team_b_id" = "team_b"."id"
-JOIN "referees" ON "matches_referees"."referee_id" = "referees"."id";
-
--- teams_players_view
--- Joing teams - teams_players - players
-CREATE VIEW "teams_players_view" AS
-SELECT "teams"."name", 
-    "players"."first_name", 
-    "players"."last_name",
-    "shirt_number", 
-    "position", 
-    "players"."birth_country", 
-    "players"."birth_year"
-FROM "teams_players"
-JOIN "teams" ON "teams_players"."team_id" = "teams"."id"
-JOIN "players" ON "teams_players"."player_id" = "players"."id";
-
--- teams_trainers_view
--- Joing teams - teams_trainers - trainers
-CREATE VIEW "teams_trainers_view" AS
-SELECT "teams"."name", 
-    "trainers"."first_name", 
-    "trainers"."last_name", 
-    "trainers"."birth_country", 
-    "trainers"."birth_year"
-FROM "teams_trainers"
-JOIN "teams" ON "teams_trainers"."team_id" = "teams"."id"
-JOIN "trainers" ON "teams_trainers"."trainer_id" = "trainers"."id";
-
--- teams_admins_view
--- Joining teams - teams_admins - users
-CREATE VIEW "teams_admins_view" AS
-SELECT "teams"."name", "users"."email"
-FROM "teams_admins"
-JOIN "teams" ON "teams_admins"."team_id" = "teams"."id"
-JOIN "users" ON "teams_admins"."user_id" = "users"."id";
-
--- leagues_admins_view
--- Joining leagues - leagues_admins - users
-CREATE VIEW "leagues_admins_view" AS
-SELECT "leagues"."name", "users"."email"
-FROM "leagues_admins"
-JOIN "leagues" ON "leagues_admins"."league_id" = "leagues"."id"
-JOIN "users" ON "leagues_admins"."user_id" = "users"."id";
-
 -- tournaments_teams_view
 -- Joining tournaments - tournaments_teams - teams
 CREATE VIEW "tournaments_teams_view" AS
-SELECT "tournaments"."name",
+SELECT 
+    "teams"."name" AS "team",
+    "tournaments"."name" AS "tournament",
     "tournaments"."status", 
     "tournaments"."season", 
-    "tournaments"."format", 
-    "tournaments"."start_date", 
-    "tournaments"."end_date", 
-    "tournaments"."max_teams",
-    "teams"."name", 
-    "teams"."foundation_year"
+    "tournaments"."max_teams"
 FROM "tournaments_teams"
 JOIN "tournaments" ON "tournaments_teams"."tournament_id" = "tournaments"."id"
 JOIN "teams" ON "tournaments_teams"."team_id" = "teams"."id";

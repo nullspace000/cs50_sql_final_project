@@ -1,5 +1,5 @@
 # to do:
-- ## Optimizations
+- write indexes described in ### Indexes
 - ## Limitations
 - fix views, specify names of the joined columns.
 - update What should a user be able to do with your database?
