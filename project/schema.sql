@@ -108,7 +108,7 @@ CREATE TABLE "matches" (
     "team_b_id" INTEGER NOT NULL,
     "score_team_b" INTEGER,
     "location" TEXT NOT NULL,
-    "date" NUMERIC NOT NULL,
+    "date" TEXT NOT NULL,
     "status" TEXT NOT NULL CHECK ("status" IN ('Scheduled', 'Ongoing', 'Finished', 'Postponed')) DEFAULT 'Scheduled',
     "creation_timestamp" NUMERIC NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY("id"),
@@ -124,12 +124,12 @@ CREATE TABLE "match_events" (
     "player_id" INTEGER NOT NULL,
     "team_id" INTEGER NOT NULL,
     "event_type" TEXT NOT NULL CHECK("event_type" IN ('goal', 'fault', 'yellow_card', 'red_card')),
-    "responsible_referee" INTEGER,
+    "responsible_referee_id" INTEGER,
     "creation_timestamp" NUMERIC NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY("id"),
     FOREIGN KEY("team_id") REFERENCES "teams"("id"),
     FOREIGN KEY("player_id") REFERENCES "players"("id"),
-    FOREIGN KEY("responsible_referee") REFERENCES "referees"("id")
+    FOREIGN KEY("responsible_referee_id") REFERENCES "referees"("id")
 );
 
 -- Represents tournaments
@@ -232,6 +232,30 @@ JOIN "tournaments" ON "matches"."tournament_id" = "tournaments"."id"
 JOIN "teams" AS "team_a" ON "matches"."team_a_id" = "team_a"."id"
 JOIN "teams" AS "team_b" ON "matches"."team_b_id" = "team_b"."id"
 JOIN "leagues" ON "tournaments"."league_id" = "leagues"."id";
+
+-- match_events_view
+-- Joining "matches" - "match_events" - "players" - "teams" - "referees"
+CREATE VIEW "match_events_view" AS
+SELECT
+    "match_events"."event_type",
+    "players"."first_name" AS "player_first_name",
+    "players"."last_name" AS "player_last_name",
+    "teams"."name" AS "team",
+    "match_events"."id" AS "event_id",
+    "team_a"."name" AS "match_team_A",
+    "team_b"."name" AS "match_team_B",
+    "matches"."date" AS "match_date",
+    "referees"."first_name" AS "referee_first_name",
+    "referees"."last_name" AS "referee_last_name",
+    "match_events"."creation_timestamp"
+FROM "match_events"
+JOIN "matches" ON "match_events"."match_id" = "matches"."id"
+JOIN "teams" AS "team_a" ON "matches"."team_a_id" = "team_a"."id"
+JOIN "teams" AS "team_b" ON "matches"."team_b_id" = "team_b"."id"
+JOIN "teams" ON "match_events"."team_id" = "teams"."id"
+JOIN "players" ON "match_events"."player_id" = "players"."id"
+JOIN "referees" ON "match_events"."responsible_referee_id" = "referees"."id";
+
 
 -- matches_referees_view
 -- Joining "teams" - "matches" - "matches_referees" - "referees"

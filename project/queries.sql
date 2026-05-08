@@ -140,7 +140,7 @@ VALUES (
     0,
     (SELECT "id" FROM "teams" WHERE "name" = 'Iron Vanguard'), 
     0,
-    'Iron Vanguard Soccer Gym', 03.05
+    'Iron Vanguard Soccer Gym', '03.jul.2026'
 );
 
 -- * Add referees to the match through the matches_referees table.
@@ -153,7 +153,7 @@ VALUES (
         WHERE
             "team_a_id" = (SELECT "id" FROM "teams" WHERE "name" = 'Bobs team')
             AND "team_b_id" = (SELECT "id" FROM "teams" WHERE "name" = 'Iron Vanguard')
-            AND "date" = 03.05
+            AND "date" = '03.jul.2026'
     )
 );
 
@@ -164,13 +164,13 @@ WHERE "id" = (
     WHERE
         "team_a_id" = (SELECT "id" FROM "teams" WHERE "name" = 'Bobs team')
         AND "team_b_id" = (SELECT "id" FROM "teams" WHERE "name" = 'Iron Vanguard')
-        AND "date" = 03.05
+        AND "date" = '03.jul.2026'
     );
 
 -- * Register a goal in the match_events table (updates the score on the matches table)
 -- Example: Marco Osei scored a goal
 INSERT INTO "match_events" (
-    "match_id", "player_id", "team_id", "event_type", "responsible_referee"
+    "match_id", "player_id", "team_id", "event_type", "responsible_referee_id"
 )
 VALUES (
     (
@@ -178,7 +178,7 @@ VALUES (
         WHERE
             "team_a_id" = (SELECT "id" FROM "teams" WHERE "name" = 'Bobs team')
             AND "team_b_id" = (SELECT "id" FROM "teams" WHERE "name" = 'Iron Vanguard')
-            AND "date" = 03.05
+            AND "date" = '03.jul.2026'
     ), 
     (SELECT "id" FROM "players" WHERE "first_name" = 'Marco' AND "last_name" = 'Osei'),
     (SELECT "id" FROM "teams" WHERE "name" = 'Iron Vanguard'),
@@ -192,5 +192,5 @@ WHERE "id" = (
         WHERE
             "team_a_id" = (SELECT "id" FROM "teams" WHERE "name" = 'Bobs team')
             AND "team_b_id" = (SELECT "id" FROM "teams" WHERE "name" = 'Iron Vanguard')
-            AND "date" = 03.05
+            AND "date" = '03.jul.2026'
     );

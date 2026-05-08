@@ -145,7 +145,7 @@ The `match_events` table includes:
 * `player_id`, which is the ID of the player involved in the event as an `INTEGER`. A `FOREIGN KEY` constraint references the `id` column in the `players` table.
 * `team_id`, which is the ID of the team associated with the event as an `INTEGER`. A `FOREIGN KEY` constraint references the `id` column in the `teams` table.
 * `event_type`, which specifies the type of event as `TEXT NOT NULL`. A `CHECK` constraint restricts its value to `'goal'`, `'fault'`, `'yellow_card'`, or `'red_card'`.
-* `responsible_referee`, which specifies the referee that reported the match event.
+* `responsible_referee_id`, which specifies the referee that reported the match event.
 * `creation_timestamp`, which specifies when the event was recorded, stored as `NUMERIC` and defaulting to the current timestamp.
 
 #### Tournaments
@@ -319,3 +319,5 @@ The same is true for `users.email`. Users are rearched for by their email. So I 
 
 * What are the limitations of your design?
 * What might your database not be able to represent very well?
+
+* Extra time and penalty shootouts — For Knockout format tournaments, there is no mechanism to represent tiebreakers, extra time, or shootout results.
