@@ -307,10 +307,11 @@ Inner joins tables `tournaments_teams`, `tournaments` and `teams`.
 
 ### Indexes
 
-#### first & last names
+- **first & last names**  
 For most of the queries in `queries.sql`, it is common for players, trainers and referees to be added and removed from teams, found by their `first_name` and `last_name` in the queries.
 So I created an index for these columns.
 
+- **email**  
 The same is true for `users.email`. So I also created an index there.
 
 ## Limitations
