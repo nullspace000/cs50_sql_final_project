@@ -124,10 +124,12 @@ CREATE TABLE "match_events" (
     "player_id" INTEGER NOT NULL,
     "team_id" INTEGER NOT NULL,
     "event_type" TEXT NOT NULL CHECK("event_type" IN ('goal', 'fault', 'yellow_card', 'red_card')),
+    "responsible_referee" INTEGER,
     "creation_timestamp" NUMERIC NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY("id"),
     FOREIGN KEY("team_id") REFERENCES "teams"("id"),
-    FOREIGN KEY("player_id") REFERENCES "players"("id")
+    FOREIGN KEY("player_id") REFERENCES "players"("id"),
+    FOREIGN KEY("responsible_referee") REFERENCES "referees"("id")
 );
 
 -- Represents tournaments
