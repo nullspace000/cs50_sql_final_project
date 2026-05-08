@@ -1,9 +1,11 @@
 -- # Seeding
--- Since I cant submit all of the csv seeding files I used for testing, I brought over the entries that I used for the sample queries in this file.
+-- Since I cant submit all of the csv seeding files I used for testing, I brought over the entries that I used for the sample queries to this file and insert them before the sample queries run.
 
--- player Rosa Becker
+-- players Rosa Becker and Marco Osei
 INSERT INTO "players" ("user_id", "first_name", "last_name", "birth_country", "birth_state", "birth_year")
-VALUES (933, 'Rosa', 'Becker', 'Mexico', 'Jalisco', 2000);
+VALUES 
+(933, 'Rosa', 'Becker', 'Mexico', 'Jalisco', 2000),
+(65, 'Marco', 'Osei', 'Mexico', 'Chihuahua', 1972);
 -- trainer Kofi Mensah
 INSERT INTO "trainers" ("user_id", "first_name", "last_name", "birth_country", "birth_state", "birth_year")
 VALUES (911, 'Kofi', 'Mensah', 'Australia', 'Queensland', 1997);
@@ -13,11 +15,14 @@ VALUES ('dmacellen3@freewebs.com', 'yP18pWdR*`');
 -- team Iron Vanguard
 INSERT INTO "teams" ("name", "bio", "foundation_year", "is_active", "primary_color", "secondary_color")
 VALUES ('Iron Vanguard', 'Founded in the industrial heartland, Iron Vanguard built the ir identity around relentless pressure and defensive solidarity. Known for never conceding the first point without a fight.', '2011', 'true', '#1C1C2E', '#E05A00');
+-- referee Noah Bakker
+INSERT INTO "referees" ("user_id", "first_name", "last_name", "birth_country", "birth_state", "birth_year")
+VALUES ('665', 'Noah', 'Bakker', 'Mexico', 'Chihuahua', 1972);
 
 -- # Sample queries
 
 -- ## Users should be able to:
--- Hypothetical: Bob Ross happeded to be an avid soccer player and want to host a league in Florida.
+-- Hypothetical: Bob is an avid soccer player and want to host a league in Florida.
 
 -- * Create their user account.
 -- Example: Bob creates his user account.

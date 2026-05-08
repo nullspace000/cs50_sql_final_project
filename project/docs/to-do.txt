@@ -1,4 +1,5 @@
 # to do:
+- add responsable_referee column to match_events
 - ## Limitations
 - add more entries to bobs team
 - update What should a user be able to do with your database?

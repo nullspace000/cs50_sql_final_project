@@ -70,7 +70,7 @@ CREATE TABLE "teams" (
 -- Players and teams joining table.
 -- Because a player could be in multiple teams and teams have multiple players.
 CREATE TABLE "teams_players" (
-    "player_id" INTEGER,
+    "player_id" INTEGER UNIQUE,
     "team_id" INTEGER,
     "shirt_number" INTEGER NOT NULL,
     "position" TEXT NOT NULL CHECK("position" IN ('Goalkeeper', 'Defender', 'Midfielder', 'Forward')),
