@@ -5,8 +5,8 @@ CREATE TABLE "users" (
     "id" INTEGER,
     "email" TEXT NOT NULL UNIQUE,
     "password" TEXT NOT NULL CHECK(LENGTH("password") >= 10),
-    "creation_timestamp" NUMERIC NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "banned" TEXT NOT NULL CHECK("banned" IN ('true', 'false')) DEFAULT 'false',
+    "creation_timestamp" NUMERIC DEFAULT CURRENT_TIMESTAMP,
+    "banned" TEXT CHECK("banned" IN ('true', 'false')) DEFAULT 'false',
     PRIMARY KEY("id")
 );
 
@@ -20,7 +20,7 @@ CREATE TABLE "players" (
     "birth_state" TEXT NOT NULL,
     "birth_year" INTEGER NOT NULL,
     "last_game" INTEGER, --to be implemented
-    "creation_timestamp" NUMERIC NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "creation_timestamp" NUMERIC DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY("id"),
     FOREIGN KEY("user_id") REFERENCES "users"("id")
 );
@@ -34,7 +34,7 @@ CREATE TABLE "trainers" (
     "birth_country" TEXT NOT NULL,
     "birth_state" TEXT NOT NULL,
     "birth_year" INTEGER NOT NULL,
-    "creation_timestamp" NUMERIC NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "creation_timestamp" NUMERIC DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY("id"),
     FOREIGN KEY("user_id") REFERENCES "users"("id")
 );
@@ -48,7 +48,7 @@ CREATE TABLE "referees" (
     "birth_country" TEXT NOT NULL,
     "birth_state" TEXT NOT NULL,
     "birth_year" INTEGER NOT NULL,
-    "creation_timestamp" NUMERIC NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "creation_timestamp" NUMERIC DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY("id"),
     FOREIGN KEY("user_id") REFERENCES "users"("id")
 );
@@ -63,7 +63,7 @@ CREATE TABLE "teams" (
     "is_active" TEXT  NOT NULL CHECK ("is_active" IN ('true', 'false')) DEFAULT 'true',
     "primary_color" TEXT NOT NULL,
     "secondary_color" TEXT NOT NULL,
-    "creation_timestamp" NUMERIC NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "creation_timestamp" NUMERIC DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY("id")
 );
 
@@ -74,6 +74,7 @@ CREATE TABLE "teams_players" (
     "team_id" INTEGER,
     "shirt_number" INTEGER NOT NULL,
     "position" TEXT NOT NULL CHECK("position" IN ('Goalkeeper', 'Defender', 'Midfielder', 'Forward')),
+    "creation_timestamp" NUMERIC DEFAULT CURRENT_TIMESTAMP,
     -- "team_id" is first in the primary key so that the index is created for "team_id"
     PRIMARY KEY("team_id", "player_id"),
     FOREIGN KEY("player_id") REFERENCES "players"("id"),
@@ -85,6 +86,7 @@ CREATE TABLE "teams_players" (
 CREATE TABLE "teams_trainers" (
     "trainer_id" INTEGER,
     "team_id" INTEGER,
+    "creation_timestamp" NUMERIC DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY("team_id", "trainer_id"),
     FOREIGN KEY("trainer_id") REFERENCES "trainers"("id"),
     FOREIGN KEY("team_id") REFERENCES "teams"("id")
@@ -94,6 +96,7 @@ CREATE TABLE "teams_trainers" (
 CREATE TABLE "teams_admins" (
     "user_id" INTEGER,
     "team_id" INTEGER,
+    "creation_timestamp" NUMERIC DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY("team_id", "user_id"),
     FOREIGN KEY("user_id") REFERENCES "users"("id"),
     FOREIGN KEY("team_id") REFERENCES "teams"("id")
@@ -109,8 +112,8 @@ CREATE TABLE "matches" (
     "score_team_b" INTEGER,
     "location" TEXT NOT NULL,
     "date" TEXT NOT NULL,
-    "status" TEXT NOT NULL CHECK ("status" IN ('Scheduled', 'Ongoing', 'Finished', 'Postponed')) DEFAULT 'Scheduled',
-    "creation_timestamp" NUMERIC NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "status" TEXT CHECK ("status" IN ('Scheduled', 'Ongoing', 'Finished', 'Postponed')) DEFAULT 'Scheduled',
+    "creation_timestamp" NUMERIC DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY("id"),
     FOREIGN KEY("tournament_id") REFERENCES "tournaments"("id"),
     FOREIGN KEY("team_a_id") REFERENCES "teams"("id"),
@@ -125,7 +128,7 @@ CREATE TABLE "match_events" (
     "team_id" INTEGER NOT NULL,
     "event_type" TEXT NOT NULL CHECK("event_type" IN ('goal', 'fault', 'yellow_card', 'red_card')),
     "responsible_referee_id" INTEGER,
-    "creation_timestamp" NUMERIC NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "creation_timestamp" NUMERIC DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY("id"),
     FOREIGN KEY("team_id") REFERENCES "teams"("id"),
     FOREIGN KEY("player_id") REFERENCES "players"("id"),
@@ -137,18 +140,18 @@ CREATE TABLE "tournaments" (
     "id" INTEGER,
     "league_id" INTEGER,
     "name" TEXT NOT NULL,
-    "status" TEXT NOT NULL CHECK ("status" IN ('Scheduled', 'Ongoing', 'Finished', 'Postponed')) DEFAULT 'Scheduled',
-    "season" INTEGER,
-    "format" TEXT NOT NULL CHECK ("format" IN ('Knockout', 'Round Robin', 'Groups')) DEFAULT 'Knockout',
+    "status" TEXT CHECK ("status" IN ('Scheduled', 'Ongoing', 'Finished', 'Postponed')) DEFAULT 'Scheduled',
+    "season" INTEGER DEFAULT (strftime('%Y', CURRENT_TIMESTAMP)), -- year at the time of creation as default value
+    "format" TEXT CHECK ("format" IN ('Knockout', 'Round Robin', 'Groups')) DEFAULT 'Knockout',
     "start_date" NUMERIC NOT NULL,
     "end_date" NUMERIC NOT NULL,
-    "half_time" INTEGER NOT NULL DEFAULT 45,
+    "half_time" INTEGER DEFAULT 45,
     "max_teams" INTEGER NOT NULL,
-    "entry_fee_per_team" NUMERIC,
+    "entry_fee_per_team" NUMERIC DEFAULT 0,
     "points_per_win" INTEGER DEFAULT 3,
     "points_per_draw" INTEGER DEFAULT 1,
     "points_per_loss" INTEGER DEFAULT 0,
-    "creation_timestamp" NUMERIC NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "creation_timestamp" NUMERIC DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY("id"),
     FOREIGN KEY("league_id") REFERENCES "leagues"("id")
 );
@@ -159,7 +162,7 @@ CREATE TABLE "leagues" (
     "name" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "location_general" TEXT NOT NULL,
-    "creation_timestamp" NUMERIC NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "creation_timestamp" NUMERIC DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY("id")
 );
 
@@ -167,6 +170,7 @@ CREATE TABLE "leagues" (
 CREATE TABLE "leagues_admins" (
     "user_id" INTEGER,
     "league_id" INTEGER,
+    "creation_timestamp" NUMERIC DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY("league_id", "user_id"),
     FOREIGN KEY("user_id") REFERENCES "users"("id"),
     FOREIGN KEY("league_id") REFERENCES "leagues"("id")
@@ -176,6 +180,7 @@ CREATE TABLE "leagues_admins" (
 CREATE TABLE "matches_referees" (
     "referee_id" INTEGER,
     "match_id" INTEGER,
+    "creation_timestamp" NUMERIC DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY("match_id", "referee_id"),
     FOREIGN KEY("referee_id") REFERENCES "referees"("id"),
     FOREIGN KEY("match_id") REFERENCES "matches"("id")
@@ -185,6 +190,7 @@ CREATE TABLE "matches_referees" (
 CREATE TABLE "tournaments_teams" (
     "tournament_id" INTEGER,
     "team_id" INTEGER,
+    "creation_timestamp" NUMERIC DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY("tournament_id", "team_id"),
     FOREIGN KEY("tournament_id") REFERENCES "tournaments"("id"),
     FOREIGN KEY("team_id") REFERENCES "teams"("id")
