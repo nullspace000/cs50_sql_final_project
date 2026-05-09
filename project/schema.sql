@@ -6,8 +6,8 @@ CREATE TABLE "users" (
     "email" TEXT NOT NULL UNIQUE,
     "password" TEXT NOT NULL CHECK(LENGTH("password") >= 10),
     "creation_timestamp" NUMERIC DEFAULT CURRENT_TIMESTAMP,
-    "banned" TEXT CHECK("banned" IN ('true', 'false')) DEFAULT 'false',
-    PRIMARY KEY("id")
+    "banned" TEXT CHECK("banned" IN ('true', 'false')) DEFAULT 'false', -- to be integrated
+    PRIMARY KEY("id") 
 );
 
 -- Represents players
