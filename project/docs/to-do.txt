@@ -3,12 +3,11 @@
 video:
 - add subtitles
 
-DESIGN.md
-- check that all tables align with diagram
+DESIGN.md: 
 - add diagram final form
 - matches_events_view description
+- update What should a user be able to do with your database? based on queries.sql
 
 database:
-- update What should a user be able to do with your database? based on queries.sql
 
 queries:

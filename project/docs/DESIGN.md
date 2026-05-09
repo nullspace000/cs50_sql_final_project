@@ -281,7 +281,8 @@ This is the most usefull view, as it represents most of the database structure, 
 It provides a complete, human-readable summary of each match, resolving all foreign key IDs (`leagues.name`, `tournaments.name`, `team_a.name` and `team_b.name`) into their actual names.
 Inner joins tables `matches`, `tournaments`, `teams` and `leagues`.
 
-####
+#### match_events_view
+
 
 #### tournaments_view
 This view provides a complete, human-readable summary of each tournaments, resolving the foreign key ID `leagues.name` into their actual names.

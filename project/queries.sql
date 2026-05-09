@@ -194,3 +194,13 @@ WHERE "id" = (
             AND "team_b_id" = (SELECT "id" FROM "teams" WHERE "name" = 'Iron Vanguard')
             AND "date" = '03.jul.2026'
     );
+
+-- End match
+UPDATE "matches" SET "status" = 'Finished'
+WHERE "id" = (
+    SELECT "id" FROM "matches" 
+    WHERE
+        "team_a_id" = (SELECT "id" FROM "teams" WHERE "name" = 'Bobs team')
+        AND "team_b_id" = (SELECT "id" FROM "teams" WHERE "name" = 'Iron Vanguard')
+        AND "date" = '03.jul.2026'
+    );
