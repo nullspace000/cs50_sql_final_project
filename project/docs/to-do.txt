@@ -6,13 +6,9 @@ video:
 DESIGN.md
 - check that all tables align with diagram
 - add diagram final form
-
+- matches_events_view description
 
 database:
-- banned users view
-- add id column to some views
 - update What should a user be able to do with your database? based on queries.sql
 
 queries:
-  - Banned users seeding
-  

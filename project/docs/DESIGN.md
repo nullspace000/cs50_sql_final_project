@@ -4,6 +4,8 @@ By Diego Couto
 
 Video overview: <URL HERE> !@#$%!$#%wjfq;wo\
 
+![ER Diagram](diagram.png)
+
 ## Scope
 
 * What is the purpose of your database?  
@@ -278,6 +280,8 @@ Which optimizations (e.g., indexes, views) did you create? Why?
 This is the most usefull view, as it represents most of the database structure, from `leagues` to `teams`. 
 It provides a complete, human-readable summary of each match, resolving all foreign key IDs (`leagues.name`, `tournaments.name`, `team_a.name` and `team_b.name`) into their actual names.
 Inner joins tables `matches`, `tournaments`, `teams` and `leagues`.
+
+####
 
 #### tournaments_view
 This view provides a complete, human-readable summary of each tournaments, resolving the foreign key ID `leagues.name` into their actual names.

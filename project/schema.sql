@@ -223,8 +223,9 @@ CREATE INDEX "referees_last_names" ON "referees" ("last_name");
 -- Joining teams - matches - tournaments - leagues
 CREATE VIEW "matches_view" AS
 SELECT
-    "leagues"."name" AS "league",
+    "matches"."id" AS "match_id",
     "tournaments"."name" AS "tournament",
+    "leagues"."name" AS "league",
     "team_a"."name" AS "team_A",
     "matches"."score_team_a",
     "team_b"."name" AS "team_B",
@@ -330,14 +331,15 @@ JOIN "users" ON "leagues_admins"."user_id" = "users"."id";
 -- Joining leagues - tournaments
 CREATE VIEW "tournaments_view" AS
 SELECT 
-    "leagues"."name" AS "league_name",
+    "tournaments"."id" AS "tournament_id",
     "tournaments"."name" AS "tournament_name",
+    "leagues"."name" AS "league_name",
     "tournaments"."status",
     "tournaments"."season",
-    "tournaments"."format",
     "tournaments"."start_date",
     "tournaments"."end_date",
     "tournaments"."half_time",
+    "tournaments"."format",
     "tournaments"."max_teams",
     "tournaments"."entry_fee_per_team",
     "tournaments"."points_per_win",
