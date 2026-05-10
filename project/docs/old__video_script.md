@@ -21,7 +21,7 @@ But, before we start, I quickly want to say thank you. I had an absolute blast s
 ## 2. my project
     So, this is my project.
     * zoom into the top 
-    And this top part is a small diagram for the overall structure. 
+    And this top part is the heirarchy diagram that represents the overall structure. 
     So, there are tournaments in leagues, matches and teams in tournaments, match_events in matches and players, trainers and referees in teams.
 
         Now, I know I went a bit big. The scope did get out of hand but, in my defence, it look really simple in my diagram.
