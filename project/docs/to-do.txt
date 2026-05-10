@@ -4,9 +4,8 @@ video:
 - add subtitles
 
 DESIGN.md: 
-- add diagram final form
-- matches_events_view description
-- update What should a user be able to do with your database? based on queries.sql
+- add video link
+- set as README.md in the repo as symlink of DESIGN.md
 
 database:
 
