@@ -1,11 +1,14 @@
 # to do:
 
 video:
+- write script
+- make sure it does not go over 3 min
 - add subtitles
 
 DESIGN.md: 
 - add video link
-- set as README.md in the repo as symlink of DESIGN.md
+- set as README.md as copy of DESIGN.md
+- copy DESIGN.md to submit
 
 database:
 
