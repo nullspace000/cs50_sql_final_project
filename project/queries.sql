@@ -48,7 +48,7 @@ VALUES (
     (SELECT "id" FROM "teams" WHERE "name" = 'Bobs team')
 );
 
--- * Add other players to their team.
+-- * Add players to their team.
 -- Example: Bob adds himself to Bobs team.
 INSERT INTO "teams_players" ("player_id", "team_id", "shirt_number", "position")
 VALUES (

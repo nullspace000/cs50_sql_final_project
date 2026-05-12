@@ -8,7 +8,7 @@
     and, the date you have recorded this video.
 
 Welcome.
-My name is Diego Couto, nullspace on github, I'm studying software development here Querétaro México and, at the time of filming this, it's the 10th of May 2026.
+My name is Diego Couto, **show github**, I'm currently wrapping up my third semester of software development here Querétaro México and at the time of filming this, it's the *th of May 2026.
  
 This is the video overview of my final project for the harvard cs50 introduction to sql course.
 But, before we start, I quickly want to say thank you. I had an absolute blast solving the exercises and learning about how sql databases work. So much so that databases are now my favorite part of development. I can tell that tons of time and care were put into designing this course. So, thank you for making it and for making it available to all of us.
@@ -24,18 +24,45 @@ But, before we start, I quickly want to say thank you. I had an absolute blast s
     And this top part is the heirarchy diagram that represents the overall structure. 
     So, there are tournaments in leagues, matches and teams in tournaments, match_events in matches and players, trainers and referees in teams.
 
+    I'm actually really proud of this diagram, it represents the schema **show_schema** with way more detail than a normal entity relationship diagram. 
+    I made it like this because, After I decided on the idea, I was having trouble planning and keeping track of all of the relationships. So this is where most of the actual designing took place.
+    **show old diagram** This is how it looked when I started. As you can see, I was quite confused.
+
 ### explain main user flow
 
-The best way to explain how all of these tables work together is be by going through the user flow I developed in the queries.sql file. 
+Anyhow, the best way to explain how all of these tables work together is be by going through the user flow I developed in the queries.sql file. Only the most important ones though.
 
 The hypothetical case is: Bob is an avid soccer player and want to host a league in Florida.
 
 - First, the user creates their user account with their email and password. The users table is the backbone of my database, since everyone represented in it, including players, trainers, referees and admins all stem from their user account. 
 
-- for example, here the user bob@gmail.com becomes a player. This is where he inputs all the data you would want to know about a player like his **look at player attributes in diagram**
+- for example, here the user bob@gmail.com becomes a player. This is where he inputs the data you would want to know about a player like his **look at player attributes in diagram** Trainer and refere registration works exactly the same.
+
+- next, creates a team called bobs team. this is where he states the teams name, bio, and some other details. He is also added as the team admin for creating it in the teams_admins joining table. All of these red tables at the bottom are joining tables, meaing they represent many to many relationships. This is a bit more obvious in the next query.
+
+- here, bob adds a player called rosa becker to his team. The reason why we need a joining table for this is becuase teams have many players and players could be in more than one team. **show teams_players_view** I wrote a view for each joining table to make them easyer to use. 
+
+- ** select:--  Add trainers to their team.--  Add other administrators to their team.**
+next bob adds a trainer and an administrator to his team, making use of the leagues_admins and teams_trainers joining tables. Adding trainers works the same way as adding players and the only difference with adding administrators is that there is no admins table, since its not necesarry. So the teams_admins table simply references user accounts.
+
+- Lets say bob has added a bunch more people to his team and now he want to create the league. He calls it bobs grand florida league and specifies the description and general location aswell.
+
+- Now he must create the first tournament to get the league going. So he creates 'Tournament #1',
+sets the status to    'Ongoing',
+the season to    '2026',
+the format to    'Knockout', 
+the start date to 28 of may    '28.05',
+the end date three months latter on august 28    '28.08',
+the maximum number of teams to    20,
+and the entry fee to    '50$' dollars per team
+
+- Next, Iron Vanguard and his own team to the tournamen #1 and now that he has two teams, he can create the first match with this query. He sets the location to the 'Iron Vanguard Soccer Gym' and the date to the '03.jul.2026'
+
+- Bob also adds the referee Noah Bakker to the match through the matches_referees joining table.
+
+- If we jump foreward in time a bit, bob is now starting the match by changing the status to Ongoing.
 
 - 
-
 
 
 
