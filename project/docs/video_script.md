@@ -10,7 +10,7 @@
 Welcome.
 My name is Diego Couto, nullspace on github, I'm studying software development here Querétaro México and, at the time of filming this, it's the 10th of May 2026.
  
-and this is the video overview of my final project for the harvard cs50 introduction to sql course.
+This is the video overview of my final project for the harvard cs50 introduction to sql course.
 But, before we start, I quickly want to say thank you. I had an absolute blast solving the exercises and learning about how sql databases work. So much so that databases are now my favorite part of development. I can tell that tons of time and care were put into designing this course. So, thank you for making it and for making it available to all of us.
 
 ## 1. idea
@@ -23,6 +23,8 @@ But, before we start, I quickly want to say thank you. I had an absolute blast s
     * zoom into the top 
     And this top part is the heirarchy diagram that represents the overall structure. 
     So, there are tournaments in leagues, matches and teams in tournaments, match_events in matches and players, trainers and referees in teams.
+
+    - main tables
 
         Now, I know I went a bit big. The scope did get out of hand but, in my defence, it look really simple in my diagram.
         I also kept comming up with ideas and going 'oh, i could add this! i could change that! 
