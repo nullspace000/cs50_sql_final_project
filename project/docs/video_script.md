@@ -24,7 +24,29 @@ But, before we start, I quickly want to say thank you. I had an absolute blast s
     And this top part is the heirarchy diagram that represents the overall structure. 
     So, there are tournaments in leagues, matches and teams in tournaments, match_events in matches and players, trainers and referees in teams.
 
-    - main tables
+### explain main user flow
+
+The best way to explain how all of these tables work together is be by going through the user flow I developed in the queries.sql file. 
+
+The hypothetical case is: Bob is an avid soccer player and want to host a league in Florida.
+
+- First, the user creates their user account with their email and password. The users table is the backbone of my database, since everyone represented in it, including players, trainers, referees and admins all stem from their user account. 
+
+- for example, here the user bob@gmail.com becomes a player. This is where he inputs all the data you would want to know about a player like his **look at player attributes in diagram**
+
+- 
+
+
+
+
+
+
+
+
+################
+old
+###############
+
 
         Now, I know I went a bit big. The scope did get out of hand but, in my defence, it look really simple in my diagram.
         I also kept comming up with ideas and going 'oh, i could add this! i could change that! 
