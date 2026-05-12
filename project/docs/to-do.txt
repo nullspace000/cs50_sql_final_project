@@ -3,12 +3,13 @@
 video:
 - write script
 - make sure it does not go over 3 min
+- film
 - add subtitles
 
 DESIGN.md: 
 - add video link
-- set as README.md as copy of DESIGN.md
-- copy DESIGN.md to submit
+- set as README.md as symlink of DESIGN.md
+- copy DESIGN.md to submit/
 
 database:
 

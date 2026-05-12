@@ -24,7 +24,8 @@ But, before we start, I quickly want to say thank you. I had an absolute blast s
     And this top part is the heirarchy diagram that represents the overall structure. 
     So, there are tournaments in leagues, matches and teams in tournaments, match_events in matches and players, trainers and referees in teams.
 
-    I'm actually really proud of this diagram, it represents the schema **show_schema** with way more detail than a normal entity relationship diagram. 
+    I'm actually really proud of this diagram. Making it really tickled my brain. 
+    It represents the schema **show_schema** with way more detail than a normal entity relationship diagram. 
     I made it like this because, After I decided on the idea, I was having trouble planning and keeping track of all of the relationships. So this is where most of the actual designing took place.
     **show old diagram** This is how it looked when I started. As you can see, I was quite confused.
 
@@ -62,9 +63,20 @@ and the entry fee to    '50$' dollars per team
 
 - If we jump foreward in time a bit, bob is now starting the match by changing the status to Ongoing.
 
-- 
+- A couple of minutes into the match, Marco Osei from the rival team scores a goal. For this, I made the match_events table. 
+One of the referees registers the event with the match the event happened in (identified by the date and the teams),
+he must also include Marco Osei as the player, his team the iron vanguard, the event type as goal and reference himself as the responsible referee for registering the event. In this case, it was Noah Becker.
+**show event in view** There it is in our databse!!
+match events can also represent faults, yellow and red cards at the moment.
 
+- And just like that, we have used all of the tables. Reading the schema and the design.md files should be much easyer with this context.
 
+- I will continue to develop this app. I think its a really good proyect to develop while I'm learning.
+There are still tons of details to fix and specify but, this is about as far as i can get before making the mockup for the app and establishing all of the user flows. And after I have those, I will probably move to a database that supports specific datatypes, simultaneous writes and prepared statements like mariaDB. Or at least, thats my paln for now.
+
+Thank you for your attention.
+
+and thank you for making the course? if i still have time
 
 
 

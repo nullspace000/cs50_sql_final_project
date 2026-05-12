@@ -1,0 +1,3 @@
+update: queries.sql
+update: DESIGN.md
+update: schema.sql
