@@ -8,7 +8,7 @@ video:
 
 DESIGN.md: 
 - add video link
-- set as README.md as symlink of DESIGN.md
+- ensure diagram is visible
 - copy DESIGN.md to submit/
 
 database:

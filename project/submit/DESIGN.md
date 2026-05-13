@@ -5,9 +5,7 @@ By Diego Couto
 Video overview: <URL HERE> !@#$%!$#%wjfq;wo\
 
 Github repo: https://github.com/nullspace000/cs50_sql_final_project  
-(With extra suff I could not submit)
-
-![ER Diagram](diagram.png)
+(with extra suff I could not submit)
 
 ## Scope
 
