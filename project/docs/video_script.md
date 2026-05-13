@@ -72,9 +72,9 @@ match events can also represent faults, yellow and red cards at the moment.
 - And just like that, we have used all of the tables. Reading the schema and the design.md files should be much easyer with this context.
 
 - I will continue to develop this app. I think its a really good proyect to develop while I'm learning.
-There are still tons of details to fix and specify but, this is about as far as i can get before making the mockup for the app and establishing all of the user flows. And after I have those, I will probably move to a database that supports specific datatypes, simultaneous writes and prepared statements like mariaDB. Or at least, thats my paln for now.
+There are still tons of details to fix and specify but, this is about as far as i can get before making the mockup for the app and establishing all of the user flows. And after I have those, I will probably move to a database that supports specific datatypes, simultaneous writes and prepared statements like mariaDB. 
 
-Thank you for your attention.
+Thats it for now, thank you for your time.
 
 and thank you for making the course? if i still have time
 
