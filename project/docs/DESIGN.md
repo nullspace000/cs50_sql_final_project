@@ -284,7 +284,7 @@ It provides a complete, human-readable summary of each match, resolving all fore
 Inner joins tables `matches`, `tournaments`, `teams` and `leagues`.
 
 #### match_events_view
-This view resolves the foreign keys for the `matches`, `teams`, `players` and `referees` tables to make the match events human-readable.
+This view resolves the foreign keys for the `matches`, `teams`, `players` and `referees` tables to make the match events human-readable. For us to be able to identify the matches, it displays the match date and the names of the competing teams. The rest of the columns purposes are quite self explanatory.
 
 #### tournaments_view
 This view provides a complete, human-readable summary of each tournaments, resolving the foreign key ID `leagues.name` into their actual names.
