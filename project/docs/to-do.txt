@@ -1,4 +1,5 @@
 # to do:
+- registering players with no user account
 
 video:
 - write script
@@ -9,7 +10,7 @@ video:
 DESIGN.md: 
 - add video link
 - ensure diagram is visible
-- copy DESIGN.md to submit/
+- add github link
 
 database:
 

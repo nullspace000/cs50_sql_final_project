@@ -5,7 +5,6 @@ By Diego Couto
 Video overview: <URL HERE> !@#$%!$#%wjfq;wo\
 
 Github repo: https://github.com/nullspace000/cs50_sql_final_project  
-(With extra suff I could not submit)
 
 ![ER Diagram](diagram.png)
 
@@ -188,9 +187,7 @@ The `leagues` table includes:
 
 ### Relationships
 
-The below entity relationship diagram describes the relationships among the entities in the database.
-
-![ER Diagram](diagram.png)
+The entity relationship diagram (diagram.png) describes the relationships among the entities in the database. The submited diagram is the 26th version.
 
 #### General Relationsips
 
