@@ -52,6 +52,7 @@ Github repo: https://github.com/nullspace000/cs50_sql_final_project
 
 * What's beyond the scope of what a user should be able to do with your database?
   - Representing player specific performance metrics.
+  - Registering some players to teams without them having to create a user account, to allow for flexibility when managin members and for non tech-savy people to take part without a device.
   - Keeping track of entry fee payments (this would be a good feature in the app).
   - Google maps links for the venues/soccer fields.
   - Profile photos for the players, trainers and referees.
