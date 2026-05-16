@@ -2,7 +2,7 @@
 
 By Diego Couto
 
-Video overview: <URL HERE> !@#$%!$#%wjfq;wo\
+Video overview: https://youtu.be/lDE_XbhO8ZE
 
 Github repo: https://github.com/nullspace000/cs50_sql_final_project  
 
@@ -11,7 +11,7 @@ Github repo: https://github.com/nullspace000/cs50_sql_final_project
 ## Scope
 
 * What is the purpose of your database?  
-  I'm not a soccer fan myself, but I have this Idea for an app: To represent football leagues. It would allow users to keep track of tournaments, create their own team, publish match location and so on.
+  I'm not a soccer fan myself, but I have this Idea for an app: To represent local soccer leagues. It would allow users to keep track of tournaments, create their own team, publish match location and so on.
 
 * Which people, places, things, etc. are you including in the scope of your database?
   - Leagues
