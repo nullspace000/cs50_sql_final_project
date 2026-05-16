@@ -40,7 +40,7 @@ VALUES (
 -- * Create a team.
 -- Example: Bob creates a team called Bobs team.
 INSERT INTO "teams" ("name", "bio", "foundation_year", "is_active", "primary_color", "secondary_color")
-VALUES ('Bobs team', 'Team started by the legendary Bob Ross', 1960, 'true', 'Green', 'Blue');
+VALUES ('Bobs team', 'Team started by the legendary Bob', 1960, 'true', 'Green', 'Blue');
 -- Automatically adds the creator to the team_admins table.
 INSERT INTO "teams_admins" ("user_id", "team_id")
 VALUES (

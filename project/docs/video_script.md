@@ -7,7 +7,7 @@
     your city and country;
     and, the date you have recorded this video.
 
-Welcome.
+Welcome!
 My name is Diego Couto, **show github**, I'm currently wrapping up my third semester of software development here Querétaro México and at the time of filming this, it's the *th of May 2026.
  
 This is the video overview of my final project for the harvard cs50 introduction to sql course.
@@ -31,15 +31,15 @@ But, before we start, I quickly want to say thank you. I had an absolute blast s
 
 ### explain main user flow
 
-Anyhow, the best way to explain how all of these tables work together is be by going through the user flow I developed in the queries.sql file. Only the most important ones though.
+Anyhow, the best way to explain how all of these tables work together is by quickly going through the user flow I developed in the queries.sql file.
 
 The hypothetical case is: Bob is an avid soccer player and want to host a league in Florida.
 
-- First, the user creates their user account with their email and password. The users table is the backbone of my database, since everyone represented in it, including players, trainers, referees and admins all stem from their user account. 
+- First, he creates his user account by inputing his email and password. The users table is the backbone of my database, since everyone represented in it, including players, trainers, referees and admins all reference their user account. A user could potentially take on all of these rolls at the same time 
 
-- for example, here the user bob@gmail.com becomes a player. This is where he inputs the data you would want to know about a player like his **look at player attributes in diagram** Trainer and refere registration works exactly the same.
+- in this case, bob becomes a player. This is where he inputs the data you would want to know about a player like his **look at player attributes in diagram** Trainer and refere registration works exactly the same.
 
-- next, creates a team called bobs team. this is where he states the teams name, bio, and some other details. He is also added as the team admin for creating it in the teams_admins joining table. All of these red tables at the bottom are joining tables, meaing they represent many to many relationships. This is a bit more obvious in the next query.
+- next, he creates a team called bobs team. this is where he states the teams name, bio, and some other details. At his point, he is automatically added as the team administrator in the teams_admins joining table. All of these red tables at the bottom are joining tables, meaing they represent many to many relationships. This will become a bit more clear in the next query.
 
 - here, bob adds a player called rosa becker to his team. The reason why we need a joining table for this is becuase teams have many players and players could be in more than one team. **show teams_players_view** I wrote a view for each joining table to make them easyer to use. 
 

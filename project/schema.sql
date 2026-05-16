@@ -285,11 +285,11 @@ CREATE VIEW "teams_players_view" AS
 SELECT 
     "teams"."name" AS "team", 
     "players"."first_name", 
-    "players"."last_name",
-    "shirt_number", 
-    "position", 
+    "players"."last_name", 
     "players"."birth_country", 
-    "players"."birth_year"
+    "players"."birth_year",
+    "shirt_number", 
+    "position"
 FROM "teams_players"
 JOIN "teams" ON "teams_players"."team_id" = "teams"."id"
 JOIN "players" ON "teams_players"."player_id" = "players"."id";
